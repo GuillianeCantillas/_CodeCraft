@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="Register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Russo+One&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="Register.js" defer  type="module"></script>
+
+    
+</head>
+<body>
+    <div class="homeheader"> 
+        <h1>CodeCraft</h1>
+        <h2>by </h2>
+        <h3>CyberPink</h3>
+    </div>
+    <div class="Register">
+        <form id="registrationForm">
+            <h1>Get Started</h1>
+            <div class="login-link">
+                <p>Already have an account? <a href="https://guillianecantillas.github.io/CodeCraft/Login.html">Login</a></p>
+            </div>
+
+            <div class="input-box">
+                <p>First name</p>
+                <input type="text" id="FirstName" placeholder="First name"required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <p>Middle Initial</p>
+                <input type="text" id="Middle" placeholder="M.I"required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <p>Last name</p>
+                <input type="text" id="Lastname" placeholder="Last name"required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <p>Email</p>
+                <input type="email" id="emailAddress" name="email" placeholder="Use your @feualabang.edu.ph email" required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div id="emailResponse" style="margin-right:10px;"></div>
+
+            <div class="input-box">
+                <p>Password</p>
+                <input type="password" id="password" placeholder="Password" required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <p> Student Number</p>
+                <input type="text" id="Id" placeholder="Student Number" required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="Course">
+                <label for="Course">Choose your course:</label>
+                <select name="Course" id="Course">
+                    <option value="None"></option>
+                    <option value="BSCS">BSCS</option>
+                    <option value="BSIT">BSIT</option>
+                </select>
+                </div>
+            
+            <div class="Year-Level">
+                <label for="Year-Level">Choose your year level:</label>
+                <select name="Year-Level" id="Year-Level">
+                    <option value="None"></option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                </select>
+            </div>
+
+            <div class="Terms-and-Conditions">
+                <p><input type="checkbox" name="terms" value="1" required id="terms-checkbox"> I agree to the
+                    <a href="#"  id="terms-link">Terms and Conditions</a></p>
+            </div>
+            <button type="button" id="btnSubmit" class="btn">Register</button>
+
+            <div class="modal-container" id="modal_container">
+                <div class="modal">
+                  <h1>Codecraft Terms and Conditions</h1>
+                  <p> Welcome to Codecraft! These terms and conditions govern your use of our website game, located at codecraft.com. By accessing or using the Game, you agree to comply with and be bound by these Terms. If you do not agree with any part of these Terms, please do not use the Game. <br><br>
+                    1. Account Registration <br>
+                    You may need to create an account to access certain features of the Game. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for safeguarding your account password and for any activities or actions under your account. <br><br>
+                    2. User Conduct <br> You agree not to use the Game for any unlawful purpose or in any way that could harm, disable, overburden, or impair the Game. You will not use any automated system, including without limitation, "robots," "spiders," or "offline readers," to access the Game. You agree not to interfere with or disrupt the integrity or performance of the Game or the data contained therein. <br><br>
+                    3. Intellectual Property <br> All content and materials available on the Game, including but not limited to text, graphics, website name, code, images, and logos are the intellectual property of Codecraft or its licensors. You are granted a limited license to access and use the Game for personal and non-commercial purposes. You may not reproduce, distribute, modify, create derivative works of, publicly display, or in any way exploit any of the content or materials of the Game without prior written permission from Codecraft. <br><br>
+                    4. User-Generated Content <br> By submitting any content (including but not limited to text, images, and code) to the Game, you grant Codecraft a worldwide, perpetual, irrevocable, royalty-free, non-exclusive license to use, reproduce, modify, publish, translate, create derivative works from, distribute, and display such content. You represent and warrant that you own or have the necessary rights and permissions to use and submit such content and that your content does not violate any third-party rights. <br><br>
+                    5. Limitation of Liability <br> The Game is provided on an "as is" and "as available" basis. Codecraft makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. In no event shall Codecraft or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the Game, even if Codecraft or a Codecraft authorized representative has been notified orally or in writing of the possibility of such damage.  <br><br>
+                    6. Termination <br> Codecraft may terminate or suspend your account and bar access to the Game immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms. Upon termination, your right to use the Game will cease immediately. If you wish to terminate your account, you may simply discontinue using the Game. <br><br>
+                    7. Changes to These Terms <br> Codecraft reserves the right to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. <br><br>
+                    8. Governing Law <br> These Terms shall be governed and construed in accordance with the laws of the Philippines, without regard to its conflict of law provisions.<br><br>
+                    By using the Game, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. <br><br></p>
+                  <button id="close"> I agree </button>
+                </div>
+              </div>
+        </form>
+    </div>
+</body>
+</html>

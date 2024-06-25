@@ -1,0 +1,291 @@
+body {
+    background-color: #1B1919;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 80px;
+  }
+  
+  header {
+    font-family: 'Russo One', sans-serif;
+    background-color: #171415;
+    color: #fff;
+    padding: 10px 3vw; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header h1 {
+    font-family: "Bungee Inline", sans-serif;
+    margin: 0;
+    color: #F50CA0;
+  }
+  
+  h2 {
+    /*font-family: "Tiny5", sans-serif;
+    font-weight: 400;
+    font-style: normal;*/
+    margin-top: 2.5vh;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #D284AC;
+    font-size: 5vw; 
+    text-align: center;
+    text-shadow: 0 0 1vw gray, 0 0 2vw gray, 0 0 3vw gray, 0 0 4vw gray; 
+    animation: glow 1.5s infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+        text-shadow: 0 0 1vw gray, 0 0 2vw gray, 0 0 3vw gray, 0 0 4vw gray; 
+    }
+    to {
+        text-shadow: none;
+    }
+  }
+  
+  h3 {
+    font-family: "Jersey 10", sans-serif;
+    color: #D284AC;
+    font-size: 2.5vw; 
+    text-align: center;
+    margin-top: -3.5vh; 
+  }
+  
+  nav {
+    position: relative;
+    display: flex;
+    gap: 2.5vw; 
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.625vw 1.25vw; 
+  }
+  
+  nav a:hover {
+    background-color: #F50CA0;
+    border-radius: 0.625vw;
+  }
+
+  nav a.disabled {
+    font-size: 18px;
+    pointer-events: none;
+    color: #F50CA0; 
+    cursor: default;
+  }
+  
+
+  .button {
+    background-color: #171415;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+  #user-image {
+    width: 2.5vw; 
+    height: 2.5vw; 
+    border-radius: 50%;
+    margin-right: 7.5vw; 
+  }
+  
+  .flowing-line {
+    height: 0.250vw; 
+    background-color: #BB0B7B;
+    position: fixed;
+    top: 11vh; 
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    animation: flowing 5s linear infinite;
+  }
+  
+  @keyframes flowing {
+    0% {
+        transform: scaleX(0);
+    }
+    50% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
+  }
+  
+  .TextContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; 
+  }
+  
+ .horror{
+  background-color: #D284AC;
+  position: absolute;
+  top: 150px;
+  left: 130px;
+  width: 600px;
+  height: 610px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+ }
+
+ .horror:hover{
+  box-shadow: 0 20px 20px #D284AC; 
+ }
+
+ .horror #Title{
+  font-family: 'Russo One', sans-serif;
+  font-size: 20px;
+ }
+
+ .horror #Desc{
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  font-size: 14px;
+  color: white;
+ }
+
+ #image{
+  width: 600px;
+  height: 500px; 
+}
+
+.mystery{
+  background-color: #D284AC;
+  position: absolute;
+  top: 150px;
+  right: 130px;
+  width: 600px;
+  height: 610px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+ }
+
+ .mystery:hover{
+  box-shadow: 0 20px 20px #D284AC; 
+ }
+
+ .mystery #Title{
+  font-family: 'Russo One', sans-serif;
+  font-size: 20px;
+ }
+
+ .mystery #Desc{
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  font-size: 14px;
+  color: white;
+ }
+
+ #image2{
+  width: 600px;
+  height: 500px; 
+}
+
+.anomaly{
+  background-color: #D284AC;
+  position: absolute;
+  top: 830px;
+  left:130px;
+  width: 600px;
+  height: 610px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+ }
+
+
+ .anomaly:hover{
+  box-shadow: 0 20px 20px #D284AC; 
+ }
+
+ .anomaly #Title{
+  font-family: 'Russo One', sans-serif;
+  font-size: 20px;
+ }
+
+ .anomaly #Desc{
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  font-size: 14px;
+  color: white;
+ }
+
+ #image3{
+  width: 600px;
+  height: 500px; 
+}
+
+footer {
+  font-family: 'Russo One', sans-serif;
+  margin-top: 1500px;
+  text-align: right;
+  border-top: 1px solid #ccc;
+  padding-top: 4px;
+}
+
+footer nav {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+footer nav a {
+  color: #666;
+  font-size: 1.2em;
+  margin: 0 10px;
+}
+
+footer nav a:hover {
+  color: #333;
+}
+
+.arcade{
+  background-color: gray;
+  position: absolute;
+  top: 830px;
+  right:130px;
+  width: 600px;
+  height: 610px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+ }
+
+
+ .arcade:hover{
+  box-shadow: 0 20px 20px gray; 
+ }
+
+ .arcade #Title{
+  font-family: 'Russo One', sans-serif;
+  font-size: 20px;
+ }
+
+ .arcade #Desc{
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  font-size: 14px;
+  color: white;
+ }
+
+ #image4{
+  width: 600px;
+  height: 500px; 
+}

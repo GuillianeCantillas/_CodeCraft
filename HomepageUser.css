@@ -1,0 +1,188 @@
+body {
+    background-color: #1B1919;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 80px;
+    max-width: 960px;
+  }
+  
+  header {
+    font-family: 'Russo One', sans-serif;
+    background-color: #171415;
+    color: #fff;
+    padding: 10px 3vw; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header h1 {
+    font-family: "Bungee Inline", sans-serif;
+    margin: 0;
+    color: #F50CA0;
+  }
+
+  @keyframes glow {
+    from {
+        text-shadow: 0 0 1vw gray, 0 0 2vw gray, 0 0 3vw gray, 0 0 4vw gray;
+    }
+    to {
+        text-shadow: none;
+    }
+  }
+  
+  h3 {
+    font-family: "Jersey 10", sans-serif;
+    color: #D284AC;
+    font-size: 2.5vw; 
+    text-align: center;
+    margin-top: -3.5vh; 
+  }
+  
+  nav {
+    position: relative;
+    display: flex;
+    gap: 2.5vw; 
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.625vw 1.25vw; 
+  }
+  
+  nav a:hover {
+    background-color: #F50CA0;
+    border-radius: 0.625vw;
+  }
+
+  .user-image {
+    width: 2vw; 
+    height: 2vw; 
+    border-radius: 50%;
+    margin-right: 7.5vw; 
+  }
+  
+  .flowing-line {
+    height: 0.250vw; 
+    background-color: #BB0B7B;
+    position: fixed;
+    top: 11vh;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    animation: flowing 5s linear infinite;
+  }
+  
+  @keyframes flowing {
+    0% {
+        transform: scaleX(0);
+    }
+    50% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
+  }
+  
+  .textbox {
+    position: fixed;
+    top: 20vh;
+    left: 10vw;
+    border: 2px solid #ccc;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px #D284AC; 
+    padding: 10px; 
+    width: 300px;
+    height: 500px; 
+    max-height: 100%;
+    font-size: 18px;
+    background-color: #f8f8f8; 
+    font-family: 'Russo One', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.textbox .name {
+  margin-top: 160px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    flex-wrap: wrap;
+}
+
+.textbox p {
+  margin: 5px 0; 
+  padding: 0;
+}
+
+.textbox #Studentnumber,
+.textbox #Email {
+  margin-top: 5px;
+}
+
+.logout-button {
+  width: 30%;
+  height: 30px;
+  background: #D284AC;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, -1);
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  font-weight: 100;
+  position: absolute; 
+  top: 550px;
+  z-index: 1;
+}
+
+.logout-button:hover{
+  background-color: #F50CA0;
+  color: black;
+}
+
+.badges {
+  font-family: 'Russo One', sans-serif;
+  background-color: rgba(255, 255, 255, 0.716); 
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  right: 30px;
+  top: 20vh;
+  box-shadow: 0 10px 20px #D284AC; 
+}
+
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  width: 300px;
+  height: 200px;
+}
+
+#logo-image{
+  width: 100px;
+  position:absolute;
+  top: 70px;
+
+}
+
+
+
