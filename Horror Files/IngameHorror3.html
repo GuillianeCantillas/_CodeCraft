@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror</title>
+    <link rel="stylesheet" href="IngameHorror.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Russo+One&display=swap" rel="stylesheet">
+    <script src="HorrorTimer3.js" defer  type="module"></script>
+</head>
+
+<body>
+    <div class="homeheader">
+        <h1>CodeCraft</h1>
+        <h2>by </h2>
+        <h3>CyberPink</h3>
+    </div>
+
+ <div id="pixel-art-container3">
+        <img id="img19" src="Door1.png" class="pixel-art-frame">
+        <img id="img20" src="Door2.png" class="pixel-art-frame">
+        <img id="img21" src="Door3.png" class="pixel-art-frame">
+        <img id="img22" src="Door4.png" class="pixel-art-frame">
+        <img id="img23" src="Door5.png" class="pixel-art-frame">
+        <img id="img24" src="Door6.png" class="pixel-art-frame" style="display: none;">
+        <img id="img25" src="Door7.png" class="pixel-art-frame" style="display: none;"> 
+        <img id="img26" src="Door8.png" class="pixel-art-frame" style="display: none;">
+
+        <div class="buttons">
+            <button type="reset" class="button1" onclick="resetForm()">Reset</button>
+            <button type="button" class="button2" onclick="undoInput()">Undo</button>
+            <button type="button" class="button3" onclick="showHint()">Hint</button>
+        </div>
+
+        <div id="score-container">
+            <p>Score: <span id="score">0</span></p>
+        </div>
+
+        <div id="hintBox" style="display:none;">
+            <p id="hintText"></p>
+        </div>
+</div>
+
+<div class="form">
+    <form id="answerForm" onsubmit="checkAnswer13(); return false;">
+        <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence13();"><br>
+        <span id="output" style="font-size: 14px;"></span><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div class="text-box">
+    <div id="sentence10" class="sentence"> You continue walking down the hallway, but notice that it seems to be alot shorter than you thought. Because just moments later 
+        you see an old and rusted door. <br><br></div>
+    <div id="sentence11" class="sentence"> You don't know where this door might lead you, but all you know is that it is the only way out of this unusual place. <br><br></div>
+    <div id="sentence12" class="sentence"> If you wish to continue to find answers then, <br><br>
+        for (;;) { <br>
+            &nbsp; &nbsp; System.out.println("Do you want to continue? (Yes or No: )"); <br>
+            &nbsp; &nbsp; yourAnswer = scanner.nextLine().trim(); <br><br>
+    <div id="sentence13" class="sentence"> 
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (yourAnswer.equalsIgnoreCase("Yes")) { <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Well, go on then!"); <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ________; <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    } else if (yourAnswer.equalsIgnoreCase("No")) { <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("I'm sorry to hear that.");<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    } else { <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("What would you like to do?"); <br>
+            &nbsp; &nbsp;    } <br>
+        }; <br><br></div>
+    <div id="sentence14" class="sentence"> <br><br> The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop. <br><br> </div>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haunted Algorithms</title>
+    <link rel="stylesheet" href="IngameHorror0.css">
+</head>
+<body>
+        <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <h2 class="glow">WARNING:</h2>
+            <p>The game might include some flashing lights and dark themes.</p>
+            <button class="delayed-button" onclick="continueToMain()">Continue</button>
+        </div>
+    </div>
+
+    <script>
+        function continueToMain() {
+            document.getElementById('loading-screen').style.opacity = '0';
+            setTimeout(function() {
+                window.location.href = 'https://guillianecantillas.github.io/CodeCraft/IngameHorror.html';
+            }, 3000);
+        }
+        
+    </script>
+</body>
+</html>

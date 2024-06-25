@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror</title>
+    <link rel="stylesheet" href="IngameHorror.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Russo+One&display=swap" rel="stylesheet">
+    <script src="HorrorTimer.js" defer  type="module"></script>
+
+</head>
+
+<body>
+    <div class="homeheader">
+        <h1>CodeCraft</h1>
+        <h2>by </h2>
+        <h3>CyberPink</h3>
+    </div>
+
+    <div id="pixel-art-container1">
+        <img id="img2" src="2.png" class="pixel-art-frame active">
+        <img id="img3" src="3.png" class="pixel-art-frame">
+        <img id="img4" src="4.JPEG" class="pixel-art-frame">
+        <img id="img5" src="5.JPEG" class="pixel-art-frame">
+        <img id="img6" src="6.png" class="pixel-art-frame">
+        <img id="img7" src="7.png" class="pixel-art-frame">
+        <img id="img8" src="8.JPEG" class="pixel-art-frame">
+        <img id="img9" src="9.JPEG" class="pixel-art-frame">
+        <img id="img10" src="10.png" class="pixel-art-frame">
+
+    <div class="buttons">
+        <button type="reset" class="button1" onclick="resetForm()">Reset</button>
+        <button type="button" class="button2" onclick="undoInput()">Undo</button>
+        <button type="button" class="button3" onclick="showHint()">Hint</button>
+    </div>
+
+    <div id="score-container">
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <div id="hintBox" style="display:none;">
+        <p id="hintText"></p>
+    </div>
+
+    <div class="form">
+        <form id="answerForm" onsubmit="checkAnswer4(); return false;">
+            <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence4();"><br>
+            <span id="output" style="font-size: 14px;"></span><br>
+            <input type="submit" value="Submit" id="submitbutton">
+        </form>
+    </div>
+
+</div>
+    
+    <div class="text-box">
+        <div id="sentence1" class="sentence show">You awaken to a cold feeling on your back. As you open your eyes, you are met with a lightbulb continuously turning on and off. <br><br> </div>
+        <div id="sentence2" class="sentence">Trying to adjust your eyes to the surroundings, you notice that you're in a room.
+            There's a gray and maroon wall, decorated with a shelf and some books as well as beside the bed where you awaken, a sink and a small mirror.<br><br></div>
+        <div id="sentence3" class="sentence"> By the end of the room, a large steel door can be seen. You decided to walk towards the door.<br><br></div>
+        <div id="sentence4" class="sentence"> The door seems to be missing a small passcode, <br><br>
+            passcode = new File ("C:\\dungeon\\LargeSteelDoortxt");<br><br>
+            public void __________ (passcode) throws IOException <br><br></div>
+        <div id="sentence5" class="sentence"> The open() method, launches the associated application to open a file. It takes a file as an argument.<br><br> </div>
+
+        <div id="toast" class="toast">
+            <img src="Ranking2.png" alt="Toast Image">
+        </div>
+
+    </div>
+
+</body>
+</html>
