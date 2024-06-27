@@ -30,6 +30,8 @@ const user = auth.currentUser;
 
 
                     document.addEventListener("DOMContentLoaded", function () {
+                        document.getElementById("textbox").disabled = true;
+                        document.getElementById("submitbutton").disabled = true;
                         const container = document.getElementById('pixel-art-container1');
                         const button1 = document.querySelector('.button1');
                         const button2 = document.querySelector('.button2');
@@ -98,6 +100,8 @@ const user = auth.currentUser;
                         setTimeout(() => {
                                     document.getElementById("sentence4").style.display = "block";
                                     document.getElementById("sentence4").classList.add("show");
+                                    document.getElementById("textbox").disabled = false;
+                                    document.getElementById("submitbutton").disabled = false;
                                 }, 20000);       
             
                         window.checkAnswer4 = function () {
@@ -110,7 +114,10 @@ const user = auth.currentUser;
                                 const endTime = Date.now();
                                 const elapsedTime = (endTime - startTime) / 1000;
                                 console.log(`Time taken: ${elapsedTime} seconds`);
-                                sentence.innerHTML = `The door seems to be missing a small passcode, <br><br> passcode = new File ("C:\\dungeon\\LargeSteelDoortxt");<br><br>public void <span class='${spanClass}'>${userInput}</span> (passcode) throws IOException  <br><br>`;
+                                sentence.innerHTML = `The door seems to be missing a small passcode, <br><br><br><br>
+                                <span style='color: #1679AB;'> passcode </span> = <span style='color: #FF7F3E;'> new </span> File (<span style='color: #A2C579;'>\"C:\\dungeon\\LargeSteelDoor.txt\"</span>);<br><br>
+                                &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'> public void </span> <span class='${spanClass}'>${userInput}</span> (<span style='color: #1679AB;'>passcode</span>) <span style='color: #FF7F3E;'> throws </span> IOException <br><br>`;
+        
                                 document.getElementById("textbox").disabled = true;
                                 document.getElementById("submitbutton").disabled = true;
             
@@ -123,40 +130,38 @@ const user = auth.currentUser;
                                 setTimeout(() => {
                                     document.getElementById("sentence5").style.display = "block";
                                     document.getElementById("sentence5").classList.add("show");
-                                }, 1000);
+                                }, 2000);
             
                                  setTimeout(() => {
-                                    window.location.href = "https://guillianecantillas.github.io/CodeCraft/IngameHorror2.html";
+                                    window.location.href = "https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/IngameHorror2.html";
                                 }, 9000);
                             } else {
-                                sentence.innerHTML = `The door seems to be missing a small passcode, <br><br> passcode = new File ("C:\\dungeon\\LargeSteelDoortxt");<br><br>public void <span class='${spanClass}'>${userInput}</span> (passcode) throws IOException  <br><br>`;
+                                sentence.innerHTML = `The door seems to be missing a small passcode, <br><br><br><br>
+                                    <span style='color: #1679AB;'> passcode </span> = <span style='color: #FF7F3E;'> new </span> File (<span style='color: #A2C579;'>\"C:\\dungeon\\LargeSteelDoor.txt\"</span>);<br><br>
+                                    &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'> public void </span> <span class='${spanClass}'>${userInput}</span> (<span style='color: #1679AB;'>passcode</span>) <span style='color: #FF7F3E;'> throws </span> IOException <br><br>`;
+                                        };
                                 
                                 score - 2;
                                 scoreElement.textContent = score;
-                            }
-                        };
+                            };
             
                         window.updateSentence4 = function () {
                             const userInput = document.getElementById("textbox").value.trim();
                             const sentence = document.getElementById("sentence4");
-                            sentence.innerHTML = `The door seems to be missing a small passcode, <br><br> passcode = new File ("C:\\dungeon\\LargeSteelDoortxt"); <br><br>public void ${userInput} (passcode) throws IOException  <br><br>`;
-                        };
+                            sentence.innerHTML = "The door seems to be missing a small passcode, <br><br><br><br>" +
+                            "<span style='color: #1679AB;'> passcode </span> = <span style='color: #FF7F3E;'> new </span> File (<span style='color: #A2C579;'>\"C:\\dungeon\\LargeSteelDoor.txt\"</span>);<br><br>" + 
+                            "&nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'> public void </span> " + userInput + " (<span style='color: #1679AB;'>passcode</span>) <span style='color: #FF7F3E;'> throws </span> IOException <br><br>";
+                    };
+                    
             
                         window.resetForm = function () {
                             document.getElementById("answerForm").reset();
                             document.getElementById("sentence4").innerHTML = `The door seems to be missing a small passcode, <br><br> passcode = new File ("C:\\dungeon\\LargeSteelDoortxt");<br><br>public void __________ (passcode) throws IOException  <br><br>`;
                             document.getElementById("textbox").disabled = false;
             
-                            document.getElementById("sentence5").style.display = "none";
-                            document.getElementById("sentence6").style.display = "none";
-                            document.getElementById("sentence7").style.display = "none";
+                            document.getElementById("sentence5").style.display = "none";                           
                             document.getElementById("sentence5").classList.remove("show");
-                            document.getElementById("sentence6").classList.remove("show");
-                            document.getElementById("sentence7").classList.remove("show");
-            
-                            // Reset the score to 0 when the form is reset
-                            score = 0;
-                            scoreElement.textContent = score;
+                         
                         };
             
                         window.undoInput = function () {
@@ -182,4 +187,4 @@ const user = auth.currentUser;
                 toast.className = "toast show";
                 setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
             }
-                });
+        });

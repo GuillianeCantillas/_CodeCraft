@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, 'monospace';
 }
 
 body {
@@ -39,7 +38,6 @@ body {
   bottom: 39px;
   left: 230px;
 }
-
 
 #pixel-art-container1, #pixel-art-container2, #pixel-art-container3, #pixel-art-container5, #pixel-art-container6, #pixel-art-container7, #pixel-art-container8,  #pixel-art-container9{
   width: 900px;
@@ -113,18 +111,22 @@ body {
 
 .text-box {
   position: fixed;
-  top: 5px;
-  right: 50px;
-  bottom: 10vw; /* space for the input and submit button */
-  width: 30vw;
+  top: 1px;
+  right: 1px;
+  width: 50vw;
+  height: 100vh;
   max-width: 600px;
+  font-family: "Courier Prime", monospace;
+  font-weight: 400;
+  font-style: normal;
   font-size: 18px;
   color: #fff;
-  background-color: transparent;
-  padding: 10px;
+  background-color: #31363F;
+  padding: 50px;
   text-align: left;
   overflow-y: auto; /* vertical scrolling */
   transition: width 0.5s ease-in-out;
+  text-align: left;
 }
 
 .text-box.minimized {
@@ -147,7 +149,7 @@ body {
 }
 
 .form input[type="text"] {
-  width: 25vw;
+  width: 30vw;
   max-width: 600px;
   height: 5vh;
   padding: 1.5vh;
@@ -157,17 +159,17 @@ body {
   font-size: 1.1vw;
   color: white;
   position: fixed;
-  bottom: 4vh;
-  right: 10vh;
+  bottom: 1vh;
+  right: 5vh;
   z-index: 1000; /* stays on top */
   transition: width 0.5s ease-in-out;
 }
 
 .form input[type="submit"] {
   position: fixed;
-  bottom: 4vh;
-  right: 10vh;
-  width: 9vw;
+  bottom: 1vh;
+  right: 2vw;
+  width: 7vw;
   height: 5vh;
   padding: 1.5vh;
   border: none;
@@ -218,7 +220,7 @@ body {
 
 #sentence5, #sentence9, #sentence14, #sentence23, #sentence30, #sentence42{
   color: gray;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 #sentence48, #sentence55{

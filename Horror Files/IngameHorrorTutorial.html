@@ -4,39 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haunted Algorithms</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="IngameHorrrorTutorial.css">
 </head>
 <body>
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
-            <h2 class="glow">New to the mechanics of CodeCraft? We have a tutorial here for you!</h2>
-            <button class="delayed-button" onclick="continueToTutorial()">Tutorial</button>
-            <button class="delayed-button" onclick="continueToGame()">Start the game</button>
-            <button class="delayed-button" onclick="continueToMain()">Main Menu</button>
-        </div>
+            <h2>Haunted Algorithms</h2>
+            <a class="link1" href="https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/IngameHorror11.html" onclick="continueToTutorial(event)">Tutorial</a>
+            <a class="link2" href="https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/IngameHorror.html" onclick="continueToGame(event)">Start the game</a>
+            <a class="link3" href="https://guillianecantillas.github.io/CodeCraft/HomepageActual.html" onclick="continueToMain(event)">Main Menu</a>
+          </div>
     </div>
 
     <script>
-        function continueToGame() {
+        function continueToTutorial(event) {
+            event.preventDefault();
+            var link = event.target;
             document.getElementById('loading-screen').style.opacity = '0';
             setTimeout(function() {
-                window.location.href = 'https://guillianecantillas.github.io/CodeCraft/IngameHorror.html';
+                window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/IngameHorror11.html';
             }, 3000);
         }
 
-        function continueToTutorial() {
+        function continueToGame(event) {
+            event.preventDefault();
+            var link = event.target;
             document.getElementById('loading-screen').style.opacity = '0';
             setTimeout(function() {
-                window.location.href = 'https://guillianecantillas.github.io/CodeCraft/IngameHorror11.html';
+                window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/IngameHorror.html';
             }, 3000);
         }
 
-        function continueToMain() {
+        function continueToMain(event) {
+            event.preventDefault();
+            var link = event.target;
             document.getElementById('loading-screen').style.opacity = '0';
             setTimeout(function() {
-                window.location.href = 'https://guillianecantillas.github.io/CodeCraft/HomepageActual.html';
+                window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html';
             }, 3000);
         }
+
     </script>
 </body>
 </html>
