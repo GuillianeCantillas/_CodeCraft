@@ -8,6 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Russo+One&display=swap" rel="stylesheet">
 <!-- <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+
+
 
 <title>CodeCraft</title>
 </head>
@@ -20,43 +25,88 @@
       <a href="#">Leaderboards</a>
       <a href='https://guillianecantillas.github.io/CodeCraft/Supplementary.html'>Supplementary Materials</a>
     </nav>
-    <button class="button" onclick="window.location.href = 'https://guillianecantillas.github.io/CodeCraft/HomepageUser.html';">
+    <button class="buttonA" onclick="window.location.href = 'https://guillianecantillas.github.io/CodeCraft/HomepageUser.html';">
       <img src="Accounts.png" id="user-image"></button>
     <div class="flowing-line"></div>
   </header>
 
-  <button class="horror" onclick="window.location.href='https://guillianecantillas.github.io/CodeCraft/IngameHorrorTutorial.html'">
-    <p id="Title">Haunted Algorithms: Java Escape </p>
-    <p id="Desc">You find yourself trapped in a mysterious mansion where you must navigate through various rooms by solving Java programming puzzles.</p>
-    <img src="HauntedAlgorithms.png" id="image"></button>
-  </button>
+  <div class="Logo">
+        <img src="CodeCraft.png" alt="Logo2">
+          <h1>Empowering College Minds 
+              through Programming Excellence.</h1></div>
 
-  <button class="mystery" onclick="window.location.href='https://guillianecantillas.github.io/CodeCraft/Mystery%20Files/IngameMysteryTutorial.html'">
-    <p id="Title">Codebreaker Detective: Pixel Pursuit</p>
-    <p id="Desc">You are a renowned detective known for your analytical mind and an insatiable curiosity that had solved countless mysteries. One night, you recieve a mysterious message.  </p>
-    <img src="Mystery.png" id="image2"></button>
-  </button>
+  <ul class='slider'>
 
-  <button class="anomaly" onclick="window.location.href='https://guillianecantillas.github.io/CodeCraft/ANOMALY/InGameAnomaly.html'">
-    <p id="Title"> Security Cam Coder </p>
-    <p id="Desc"> You play as Marco, a newly hired security guard in FEU Alabang. You are on CCTV patrol and your shift is going well, until you see an unsual object in one of the cameras.  </p>
-    <img src="Anomaly.png" id="image3"></button>
-  </button>
+    <li class='item' style="background-image: url('MysteryReal.png')">
+      <div class='content'>
+        <h2 class='title'>"Codebreaker Detective"</h2>
+        <p class='description'> You find yourself trapped in a mysterious 
+          mansion where you must navigate through various rooms by
+           solving Java programming puzzles.</p>
+        <button>Read More</button>
+      </div>
+    </li>
 
-  <button class="arcade">
-    <p id="Title"> Arcade Mania </p>
-    <p id="Desc"> You decided to go to the arcade after a long day at school. You find an old machine at the back of the store and decided to play it. Moments later you see everything change around you. You've just been officially teleported to Super Mario Bros game.</p>
-    <img src="construction.png" id="image3"></button>
-  </button>
+    <li class='item' style="background-image: url('HauntedAlgo.png')">
+      <div class='content'>
+          <h2 class='title'>"Haunted Algorithms"</h2>
+          <p class='description'> You are a renowned detective known for 
+            your analytical mind and an insatiable curiosity that had solved
+             countless mysteries. One night, you recieve a mysterious message.</p>
+          <button>Read More</button>
+      </div>
+  </li>
+  
+    <li class='item' style="background-image: url('AnomalyReal.png')">
+      <div class='content'>
+        <h2 class='title'>"Security Cam Coder"</h2>
+        <p class='description'> You play as Marco, a newly hired security 
+          guard in FEU Alabang. You are on CCTV patrol and your shift is 
+          going well, until you see an unsual object in one of the cameras.</p>
+        <button>Read More</button>
+      </div>
+    </li>
 
+    <li class='item' style="background-image: url('ArcadeManiaReal.png')">
+      <div class='content'>
+        <h2 class='title'>"Arcade Mania"</h2>
+        <p class='description'>
+          You decided to go to the arcade after a long day at school. 
+          You find an old machine at the back of the store and decided to 
+          play it. Moments later you see everything change around you. 
+          You've just been officially teleported to Super Mario Bros game.</p>
+          <button>Read More</button>
+        </div>
+      </li>
+    </ul>
+    <nav class='nav0'>
+      <ion-icon class='btn prev' name="arrow-back-outline"></ion-icon>
+      <ion-icon class='btn next' name="arrow-forward-outline"></ion-icon>
+    </nav>
+  
   <footer>
     <nav>
       <a href="https://guillianecantillas.github.io/CodeCraft/AboutUs.html">About</a>
       <a href="https://guillianecantillas.github.io/CodeCraft/Help.html">Help</a>
       <a href="#">© 2024 CodeCraft.com</a>
     </nav>
-  </footer>
+  </footer> 
+ 
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+  <script> const slider = document.querySelector('.slider');
+
+    function activate(e) {
+      const items = document.querySelectorAll('.item');
+      e.target.matches('.next') && slider.append(items[0])
+      e.target.matches('.prev') && slider.prepend(items[items.length-1]);
+    }
+    
+    document.addEventListener('click',activate,false);
+  </script>
+
+  
 </body>
 </html>
 
