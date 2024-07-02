@@ -30,6 +30,8 @@ const user = auth.currentUser;
 
 
                  document.addEventListener("DOMContentLoaded", function () {
+                    document.getElementById("textbox").disabled = true;
+                    document.getElementById("submitbutton").disabled = true;
                         const container = document.getElementById('pixel-art-container2');
                         const button1 = document.querySelector('.button1');
                         const button2 = document.querySelector('.button2');
@@ -94,14 +96,12 @@ const user = auth.currentUser;
                 startAnimation(frames2); 
             }, 3000);
         
-            setTimeout(() => {
-                        document.getElementById("sentence7").style.display = "block";
-                        document.getElementById("sentence7").classList.add("show");
-                      }, 4000); 
         
             setTimeout(() => {
                       document.getElementById("sentence8").style.display = "block";
                       document.getElementById("sentence8").classList.add("show");
+                      document.getElementById("textbox").disabled = false;
+                      document.getElementById("submitbutton").disabled = false;
                       }, 8000); 
         
         
@@ -133,8 +133,10 @@ const user = auth.currentUser;
                     console.log(`Time taken: ${elapsedTime} seconds`);
                     newScore = score + 11; 
                     updateScore(newScore);
-                    sentence8.innerHTML = "Complete the code to verify the number you currently see in your screen. " +
-                        "<br><br>public class Chest{<br>int number = <span class='" + spanClass + "'>" + userInput + "</span> ;<br>int ChestNumber;<br><br>";
+                    sentence8.innerHTML = "Complete the code to verify the number you currently see in your screen. <br><br>" +
+                    "<span style='color: #FF7F3E;'>public class </span> <span style='color: #1679AB;'>Chest</span> { <br>" +
+                        "&nbsp; &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'>int</span> <span style='color: #1679AB;'>ChestNumber</span> = <span class='" + spanClass + "'>" + userInput + "</span>;<br>" +
+                        "&nbsp; &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'> System.out.println(<span style='color: #1679AB;'>ChestNumber</span>); </span> }<br><br></div>";
                         document.getElementById("textbox").disabled = true;
                         document.getElementById("submitbutton").disabled = true;
                         
@@ -144,12 +146,14 @@ const user = auth.currentUser;
                     }, 2000);
         
                     setTimeout(() => {
-                        window.location.href = 'https://guillianecantillas.github.io/CodeCraft/IngameHorror3.html';
-                    }, 8000);
+                        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/Horror%20Files/IngameHorror3.html';
+                    }, 15000);
         
                 } else {
-                    sentence8.innerHTML = "Complete the code to verify the number you currently see in your screen. " +
-                        "<br><br>public class Chest{<br>int number = <span class='" + spanClass + "'>" + userInput + "</span> ;<br>int ChestNumber;<br><br>";
+                    sentence8.innerHTML ="Complete the code to verify the number you currently see in your screen. <br><br>" +
+                    "<span style='color: #FF7F3E;'>public class </span> <span style='color: #1679AB;'>Chest</span> { <br>" +
+                        "&nbsp; &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'>int</span> <span style='color: #1679AB;'>ChestNumber</span> = <span class='" + spanClass + "'>" + userInput + "</span>;<br>" +
+                        "&nbsp; &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'> System.out.println(<span style='color: #1679AB;'>ChestNumber</span>); </span> }<br><br></div>";
                 };
             };
         
@@ -159,13 +163,18 @@ const user = auth.currentUser;
             window.updateSentence8 = function () {
                 var userInput = document.getElementById("textbox").value.trim();
                 var sentence8 = document.getElementById("sentence8");
-                sentence8.innerHTML = "Complete the code to verify the number you currently see in your screen. "
-                    + "<br><br>public class Chest{<br>int number =" + userInput + ";<br>int ChestNumber;<br><br>";
+                sentence8.innerHTML = "Complete the code to verify the number you currently see in your screen. <br><br>" +
+                    "<span style='color: #FF7F3E;'>public class </span> <span style='color: #1679AB;'>Chest</span> { <br>" +
+                        "&nbsp; &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'>int</span> <span style='color: #1679AB;'>ChestNumber</span> = " + userInput + ";<br>" +
+                        "&nbsp; &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'> System.out.println(<span style='color: #1679AB;'>ChestNumber</span>); </span> }<br><br></div>";
+                    
             };
                     window.resetForm = function () {
                         document.getElementById("answerForm").reset();
-                        sentence8.innerHTML = "Complete the code to verify the number you currently see in your screen. "
-                    + "<br><br>public class Chest{<br>int number = _________;<br>int ChestNumber;<br><br>";                
+                        sentence8.innerHTML = "Complete the code to verify the number you currently see in your screen. <br><br>" +
+                    "<span style='color: #FF7F3E;'>public class </span> <span style='color: #1679AB;'>Chest</span> { <br>" +
+                        "&nbsp; &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'>int</span> <span style='color: #1679AB;'>ChestNumber</span> = <span class='" + spanClass + "'>" + userInput + "</span>;<br>" +
+                        "&nbsp; &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'> System.out.println(<span style='color: #1679AB;'>ChestNumber</span>); </span> }<br><br></div>";       
                     document.getElementById("textbox").disabled = false;
                     document.getElementById("sentence9").style.display = "none";
                     document.getElementById("sentence9").classList.remove("show");

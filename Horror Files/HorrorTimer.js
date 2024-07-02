@@ -28,7 +28,6 @@ const user = auth.currentUser;
                         }
                     }
 
-
                     document.addEventListener("DOMContentLoaded", function () {
                         document.getElementById("textbox").disabled = true;
                         document.getElementById("submitbutton").disabled = true;
@@ -74,35 +73,39 @@ const user = auth.currentUser;
                         const frames = document.querySelectorAll(".pixel-art-frame");
                         let currentFrameIndex = 0;
                         const interval = 1000;
-            
+                        
+                        const startLoopIndex = 10;
+                        const endLoopIndex = 18; 
+
                         function showNextFrame() {
                             frames[currentFrameIndex].classList.remove("active");
-                            currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+                            
+                            if (currentFrameIndex === endLoopIndex) {
+                                currentFrameIndex = startLoopIndex;
+                            } else {
+                                currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+                            }
+                            
                             frames[currentFrameIndex].classList.add("active");
                         }
-            
+
                         function startAnimation() {
                             setInterval(showNextFrame, interval);
                         }
-            
+
                         startAnimation();
-            
-                        setTimeout(() => {
-                                    document.getElementById("sentence2").style.display = "block";
-                                    document.getElementById("sentence2").classList.add("show");
-                                }, 5000);
-            
+
                          setTimeout(() => {
                                     document.getElementById("sentence3").style.display = "block";
                                     document.getElementById("sentence3").classList.add("show");
-                                }, 15000);
+                                }, 5000);
                                 
                         setTimeout(() => {
                                     document.getElementById("sentence4").style.display = "block";
                                     document.getElementById("sentence4").classList.add("show");
                                     document.getElementById("textbox").disabled = false;
                                     document.getElementById("submitbutton").disabled = false;
-                                }, 20000);       
+                                }, 10000);       
             
                         window.checkAnswer4 = function () {
                             const userInput = document.getElementById("textbox").value.trim().toLowerCase();
@@ -133,7 +136,7 @@ const user = auth.currentUser;
                                 }, 2000);
             
                                  setTimeout(() => {
-                                    window.location.href = "https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/IngameHorror2.html";
+                                    window.location.href = "https://guillianecantillas.github.io/_CodeCraft/Horror%20Files/IngameHorror2.html";
                                 }, 9000);
                             } else {
                                 sentence.innerHTML = `The door seems to be missing a small passcode, <br><br><br><br>

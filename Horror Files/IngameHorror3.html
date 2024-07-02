@@ -28,9 +28,12 @@
         <img id="img21" src="Door3.png" class="pixel-art-frame">
         <img id="img22" src="Door4.png" class="pixel-art-frame">
         <img id="img23" src="Door5.png" class="pixel-art-frame">
-        <img id="img24" src="Door6.png" class="pixel-art-frame" style="display: none;">
-        <img id="img25" src="Door7.png" class="pixel-art-frame" style="display: none;"> 
-        <img id="img26" src="Door8.png" class="pixel-art-frame" style="display: none;">
+        <img id="img24" src="Door6.png" class="pixel-art-frame">
+        <img id="img25" src="Door7.png" class="pixel-art-frame">
+        <img id="img26" src="Door8.png" class="pixel-art-frame">
+        <img id="img27" src="Door9.png" class="pixel-art-frame">
+        <img id="img28" src="Door10.png" class="pixel-art-frame">
+
 
         <div class="buttons">
             <button type="reset" class="button1" onclick="resetForm()">Reset</button>
@@ -48,33 +51,38 @@
 </div>
 
 <div class="form">
-    <form id="answerForm" onsubmit="checkAnswer13(); return false;">
-        <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence13();"><br>
+    <form id="answerForm" onsubmit="checkAnswer12(); return false;">
+        <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence12();"><br>
         <span id="output" style="font-size: 14px;"></span><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" id="submitbutton">
     </form>
 </div>
 
+<!--
+    #1679AB - variables
+    #FF7F3E - syntax
+    #A2C579 - " "
+-->
+
 <div class="text-box">
-    <div id="sentence10" class="sentence"> You continue walking down the hallway, but notice that it seems to be alot shorter than you thought. Because just moments later 
-        you see an old and rusted door. <br><br></div>
+    <div id="sentence10" class="sentence"> You continue walking down the hallway which in just moments later you see an old and rusted door. <br><br></div>
     <div id="sentence11" class="sentence"> You don't know where this door might lead you, but all you know is that it is the only way out of this unusual place. <br><br></div>
     <div id="sentence12" class="sentence"> If you wish to continue to find answers then, <br><br>
-        for (;;) { <br>
-            &nbsp; &nbsp; System.out.println("Do you want to continue? (Yes or No: )"); <br>
-            &nbsp; &nbsp; yourAnswer = scanner.nextLine().trim(); <br><br>
-    <div id="sentence13" class="sentence"> 
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (yourAnswer.equalsIgnoreCase("Yes")) { <br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Well, go on then!"); <br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ________; <br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    } else if (yourAnswer.equalsIgnoreCase("No")) { <br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("I'm sorry to hear that.");<br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    } else { <br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("What would you like to do?"); <br>
+        <span style="color: #FF7F3E;">for (;;)</span> { <br>
+            &nbsp; &nbsp; <span style="color: #FF7F3E;">System.out.println(<span style="color: #A2C579;">"Do you want to continue?<br>
+            &nbsp; &nbsp; (Yes or No: )"</span>);</span> <br>
+            &nbsp; &nbsp; <span style="color: #1679AB;">yourAnswer</span> <span style="color: #FF7F3E;">= scanner.nextLine().trim();</span> <br><br>
+        &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #FF7F3E;">if (<span style="color: #1679AB;">yourAnswer</span>.equalsIgnoreCase(<span style="color: #A2C579;">"Yes"</span>))</span> { <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #FF7F3E;">System.out.println(<span style="color: #A2C579;">"Well, go on then!"</span>);</span> <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ________<span style="color: #FF7F3E;">;</span> <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    } <span style="color: #FF7F3E;">else if (<span style="color: #1679AB;">yourAnswer</span>.equalsIgnoreCase(<span style="color: #A2C579;">"No"</span>))</span> { <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #FF7F3E;">System.out.println(<span style="color: #A2C579;">"I'm sorry to hear that."</span>);</span><br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #FF7F3E;">break;</span><br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    } <span style="color: #FF7F3E;"> else </span> { <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #FF7F3E;">System.out.println(<span style="color: #A2C579;">"What would you like to do?"</span>);</span> <br>
             &nbsp; &nbsp;    } <br>
         }; <br><br></div>
-    <div id="sentence14" class="sentence"> <br><br> The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop. <br><br> </div>
+    <div id="sentence14" class="sentence"> <br> The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop. <br><br> </div>
 </div>
 
 

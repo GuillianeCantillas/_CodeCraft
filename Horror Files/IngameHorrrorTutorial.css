@@ -73,12 +73,12 @@ a:hover{
     }
   }
 
-  @import url(https://fonts.googleapis.com/css?family=Denk+One);
-
+ 
   h2 {
     color: transparent;
+    font-family: "Averia Serif Libre", serif;  
+    font-weight: 700;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    font-family: 'Denk One', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 4em;

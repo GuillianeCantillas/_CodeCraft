@@ -102,6 +102,8 @@ body {
   font-weight: 100;
   position: absolute; 
   z-index: 1;
+  font-family: "Averia Serif Libre", serif;  
+
 }
 
 .button1:hover, .button2:hover, .button3:hover {
@@ -113,7 +115,7 @@ body {
   position: fixed;
   top: 1px;
   right: 1px;
-  width: 50vw;
+  width: 40vw;
   height: 100vh;
   max-width: 600px;
   font-family: "Courier Prime", monospace;
@@ -149,7 +151,8 @@ body {
 }
 
 .form input[type="text"] {
-  width: 30vw;
+  font-family: "Averia Serif Libre", serif;  
+  width: 23vw;
   max-width: 600px;
   height: 5vh;
   padding: 1.5vh;
@@ -166,10 +169,11 @@ body {
 }
 
 .form input[type="submit"] {
+  font-family: "Averia Serif Libre", serif;  
   position: fixed;
   bottom: 1vh;
   right: 2vw;
-  width: 7vw;
+  width: 6vw;
   height: 5vh;
   padding: 1.5vh;
   border: none;
@@ -219,8 +223,8 @@ body {
 }
 
 #sentence5, #sentence9, #sentence14, #sentence23, #sentence30, #sentence42{
-  color: gray;
-  font-size: 16px;
+  color: #D284AC;
+  font-size: 18px;
 }
 
 #sentence48, #sentence55{
@@ -228,8 +232,7 @@ body {
   font-size: 12px;
 }
 
-
-#sentence19, #sentence34,  #sentence46{
+#sentence19, #sentence34{
   color: red;
   font-size: 18px;
 }
@@ -255,6 +258,7 @@ body {
 }
 
 #score-container p {
+  font-family: "Averia Serif Libre", serif;  
   margin: 0;
 }
 
@@ -267,6 +271,7 @@ body {
   border-radius: 5px;
   padding: 10px;
   margin-top: 10px;
+  font-family: "Averia Serif Libre", serif;  
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: none; 
 }
@@ -351,61 +356,62 @@ body {
 }
 
 .bg-change {
-  background-color: white; /* Change to your desired color */
+  background-color: white; 
   transition: background-color 0.5s ease;
 }
 
 .bg-change .text-box{
-  color: red; /* Change to your desired color */
+  color: white; 
+  background-color: yellow;
 }
 
 .bg-change .button1{
-  background: red; /* Change to your desired color */
+  background: yellow; 
   color: white;
 }
 
 .bg-change .button2{
-  background: red; /* Change to your desired color */
+  background: yellow; 
   color: white;
 }
 
 .bg-change .button3{
-  background: red; /* Change to your desired color */
+  background: yellow; 
   color: white;
 }
 
 .bg-change .form input[type="submit"] {
-  background: red; /* Change to your desired color */
+  background: yellow; 
   color: white;
 }
 
 .bg-change #score-container{
-  color: red
+  color: yellow;
 }
 
 .bg-change .form input[type="text"] {
-  background: red; /* Change to your desired color */
+  background: yellow; 
   color: white;
 }
 
 .bg-change .homeheader h1{
-  color: red;
+  color: yellow;
 }
 
 .bg-change .homeheader h2{
-  color: red;
+  color: yellow;
 }
 
 .bg-change .homeheader h3{
-  color: red;
+  color: yellow;
 }
 
 .bg-change .text-box::-webkit-scrollbar-thumb{
-  background-color: red;
+  background-color: yellow;
 }
 
 .bg-change .text-box::-webkit-scrollbar-track{
-  background-color: red;
+  background-color: yellow;
 }
 
 .toast {
