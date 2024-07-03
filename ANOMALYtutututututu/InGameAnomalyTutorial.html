@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="InGameAnomalyTutorial.css">
+</head>
+<body>
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <h2>Anomaly: Surveillance Secrets</h2>
+            <a class="link1" href="https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/InGameAnomaly7Tutorial.html" onclick="continueToTutorial(event)">Tutorial</a>
+            <a class="link2" href="https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/InGameAnomaly.html" onclick="continueToGame(event)">Start the game</a>
+            <a class="link3" href="https://guillianecantillas.github.io/CodeCraft/HomepageActual.html" onclick="continueToMain(event)">Main Menu</a>
+          </div>
+    </div>
+
+    <script>
+        function continueToTutorial(event) {
+            event.preventDefault();
+            var link = event.target;
+            document.getElementById('loading-screen').style.opacity = '0';
+            setTimeout(function() {
+                window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/InGameAnomaly7Tutorial.html';
+            }, 3000);
+        }
+
+        function continueToGame(event) {
+            event.preventDefault();
+            var link = event.target;
+            document.getElementById('loading-screen').style.opacity = '0';
+            setTimeout(function() {
+                window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/Horror20%Files/InGameAnomaly.html';
+            }, 3000);
+        }
+
+        function continueToMain(event) {
+            event.preventDefault();
+            var link = event.target;
+            document.getElementById('loading-screen').style.opacity = '0';
+            setTimeout(function() {
+                window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html';
+            }, 3000);
+        }
+
+    </script>
+</body>
+</html>

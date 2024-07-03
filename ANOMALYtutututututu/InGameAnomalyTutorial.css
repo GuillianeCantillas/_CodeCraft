@@ -1,0 +1,116 @@
+body {
+    /*background: radial-gradient(circle, rgba(0,0,0,1) 20%, #bb0a1e 80%);*/
+    background: radial-gradient(circle, #034f16, black);
+  
+    color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .loading-screen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      color: white;
+      z-index: 1;
+      transition: opacity 1s ease-in-out;
+      background: transparent;
+  }
+    
+    .loading-content {
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+    
+    .loading-content p,
+    .loading-content button {
+      transition: opacity 1s ease-in-out;
+    }
+    
+    
+    .loading-content p {
+      font-size: 1.2em;
+    }
+  
+    .loading-content a {
+      font-family: "Jacquard 12", system-ui;
+      font-size: 35px;
+      display: block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      overflow: hidden;
+      text-align: center;
+      transition: background-color 0.3s, opacity 1s ease-in-out;
+  }
+  
+  a:hover{
+    color:#05962a;
+  }
+  
+    .main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+  
+    @keyframes fadeIn {
+      0% {
+          opacity: 0;
+      }
+      100% {
+          opacity: 1;
+      }
+    }
+  
+    @import url(https://fonts.googleapis.com/css?family=Denk+One);
+  
+    h2 {
+      color: transparent;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      font-family: 'Denk One', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 4em;
+      text-align: center;
+      -webkit-animation: horror-animation 5s infinite;
+      -moz-animation: horror-animation 5s infinite;
+      -o-animation: horror-animation 5s infinite;
+      animation: horror-animation 5s infinite;
+    }
+    
+    @keyframes horror-animation {
+      0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.1); left: 51%; top: 36%; }
+      7% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); left: 50%; top: 35%; }
+      14% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); left: 49%; top: 34%; }
+      21% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); left: 50%; top: 35%; }
+      23% { text-shadow: 0 0 5px #212121; left: 50%; }
+      25% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); left: 50%; }
+      28% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); left: 49%; }
+      35% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); left: 49%; }
+      42% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); left: 50%; }
+      49% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); left: 50%; }
+      51% { text-shadow: 0 0 5px #212121; left: 50%; }
+      53% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); left: 50%; }
+      56% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.9); left: 51%; }
+      63% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); left: 51%; }
+      70% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); left: 51%; }
+      77% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); left: 50%; }
+      79% { text-shadow: 0 0 5px #212121; left: 50%; }
+      81% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); left: 52%; }
+      84% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); left: 50%; }
+      91% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); left: 50%; }
+      98% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); left: 49%; }
+      100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.1); left: 51%; top: 36%; }
+  }
+  
