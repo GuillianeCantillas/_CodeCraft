@@ -42,7 +42,7 @@ register.addEventListener("click", async function() {
             Password: enterpassword.value,
             Course: enterCourse.value,
 
-        }); window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html';
+        }); window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageTeachers.html';
     } catch (error) {
         // Handle errors
         console.error("Registration error:", error.message);
@@ -69,7 +69,6 @@ const password = document.querySelector('#password');
           const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
           password.setAttribute('type', type);
     
-          // Toggle the eye icon
           this.classList.toggle('bxs-show');
           this.classList.toggle('bxs-hide');
         });

@@ -295,7 +295,7 @@ body {
   .Logo {
     position: absolute;
     top: 205x;
-    left: 500px;
+    left: 50%;
     width: 15px;
     height: 25px;
     display: inline-block;

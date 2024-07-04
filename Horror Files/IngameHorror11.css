@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, 'monospace';
   }
   
   body {
@@ -85,6 +84,7 @@
     cursor: pointer;
     font-size: 14px;
     color: white;
+    font-family: "Averia Serif Libre", serif;  
     font-weight: 100;
     position: absolute; 
     z-index: 1;
@@ -96,10 +96,11 @@
   }
   
   .text-box {
+    font-family: "Courier Prime", monospace;
     position: fixed;
     top: 5px;
     right: 50px;
-    bottom: 10vw; /* space for the input and submit button */
+    bottom: 10vw; 
     width: 30vw;
     max-width: 600px;
     font-size: 18px;
@@ -107,7 +108,7 @@
     background-color: transparent;
     padding: 10px;
     text-align: left;
-    overflow-y: auto; /* vertical scrolling */
+    overflow-y: auto; 
     transition: width 0.5s ease-in-out;
   }
   
@@ -139,6 +140,7 @@
     background-color: black;
     border-radius: 3px;
     font-size: 1.1vw;
+    font-family: "Averia Serif Libre", serif;  
     color: white;
     position: fixed;
     bottom: 4vh;
@@ -158,6 +160,7 @@
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 1vw;
+    font-family: "Averia Serif Libre", serif;  
     background-color: #D284AC;
     color: white;
     cursor: pointer;

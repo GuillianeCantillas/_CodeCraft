@@ -21,7 +21,7 @@ body {
   font-family: "Bungee Inline", sans-serif;
   font-size: 25px;
   color: #F50CA0;
-  bottom: 20px;
+  bottom: 35px;
   left: 50px; 
 }
 .homeheader h2 {
@@ -115,7 +115,7 @@ body {
   position: fixed;
   top: 1px;
   right: 1px;
-  width: 40vw;
+  width: 30vw;
   height: 100vh;
   max-width: 600px;
   font-family: "Courier Prime", monospace;
@@ -223,12 +223,12 @@ body {
 }
 
 #sentence5, #sentence9, #sentence14, #sentence23, #sentence30, #sentence42{
-  color: #D284AC;
+  color: white;
   font-size: 18px;
 }
 
 #sentence48, #sentence55{
-  color: #D284AC;
+  color: white;
   font-size: 18px;
 }
 

@@ -437,9 +437,9 @@ body {
   opacity: 1;
 }
 
-#sentence5, #sentence9, #sentence14, #sentence23, #sentence30, #sentence42{
-  color: gray;
-  font-size: 12px;
+#sentence13{
+  color: #D284AC;
+  font-size: 18px;
 }
 
 .form {
@@ -467,8 +467,8 @@ body {
 }
 
 #hintBox {
-  width: 20%;
-  height: 20%;
+  width: 40%;
+  height: 70%;
   position: absolute;
   background-color: transparent;
   border: 1px solid #ccc;
@@ -664,3 +664,7 @@ body {
   to {top: 0; opacity: 0;}
 }
 
+.highlight {
+  border: 2px solid #D284AC;
+  box-shadow: 0 0 30px #D284AC;
+}
