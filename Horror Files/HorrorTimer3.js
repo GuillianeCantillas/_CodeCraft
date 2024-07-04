@@ -140,6 +140,8 @@ const user = auth.currentUser;
                 setTimeout(() => {
                           document.getElementById("sentence12").style.display = "block";
                           document.getElementById("sentence12").classList.add("show");
+                          document.getElementById("textbox").disabled = false;
+                        document.getElementById("submitbutton").disabled = false;
                           }, 15000); 
             
             
