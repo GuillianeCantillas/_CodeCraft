@@ -1,4 +1,3 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";;
@@ -17,20 +16,17 @@ const firebaseConfig = {
   const auth = getAuth();
   const db = getFirestore();
 
-var enterstudentnumber = document.getElementById('Id');
-var enterfirstname = document.getElementById('FirstName');
-var entermiddle = document.getElementById('Middle');
-var enterlastname = document.getElementById('Lastname');
+
 var enteremail = document.getElementById('emailAddress');
 var enterpassword = document.getElementById('password');
 var enterCourse = document.getElementById('Course');
-var enterYearLevel = document.getElementById('Year-Level');
+
 
 const register = document.getElementById("btnSubmit");
 register.addEventListener("click", async function() { 
     try {
 
-        if (!enterstudentnumber.value || !enteremail.value || !enterpassword.value || !enterCourse.value || !enterYearLevel.value || !enterfirstname.value || !entermiddle.value || !enterlastname.value) {
+        if (!enteremail.value || !enterpassword.value || !enterCourse.value) {
            alert("Please fill out all fields."); 
         }
 
@@ -41,16 +37,12 @@ register.addEventListener("click", async function() {
         const userCredential = await createUserWithEmailAndPassword(auth, enteremail.value, enterpassword.value);
         const user = userCredential.user;
  
-        await setDoc(doc(db, "users", userCredential.user.uid), {
-            StudentNumber: enterstudentnumber.value,
-            First_Name: enterfirstname.value,
-            Initial: entermiddle.value,
-            Last_Name: enterlastname.value,
+        await setDoc(doc(db, "teachers", userCredential.user.uid), {
             Email: emailAddress.value,
             Password: enterpassword.value,
             Course: enterCourse.value,
-            YearLevel: enterYearLevel.value
-        }); window.location.href = 'https://guillianecantillas.github.io/CodeCraft/HomepageActual.html';
+
+        }); window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html';
     } catch (error) {
         // Handle errors
         console.error("Registration error:", error.message);

@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="Register.js" defer  type="module"></script>
 
     
@@ -27,45 +28,46 @@
         <form id="registrationForm">
             <h1>Get Started</h1>
             <div class="login-link">
-                <p>Already have an account? <a href="https://guillianecantillas.github.io/CodeCraft/Login.html">Login</a></p>
+                <p>Already have an account? <a href="https://guillianecantillas.github.io/_CodeCraft/Login.html">Login</a></p>
             </div>
 
             <div class="input-box">
                 <p>First name</p>
                 <input type="text" id="FirstName" placeholder="First name"required>
-                <i class='bx bxs-user'></i>
+              
             </div>
 
             <div class="input-box">
                 <p>Middle Initial</p>
                 <input type="text" id="Middle" placeholder="M.I"required>
-                <i class='bx bxs-user'></i>
+                
             </div>
 
             <div class="input-box">
                 <p>Last name</p>
                 <input type="text" id="Lastname" placeholder="Last name"required>
-                <i class='bx bxs-user'></i>
+              
             </div>
 
             <div class="input-box">
                 <p>Email</p>
                 <input type="email" id="emailAddress" name="email" placeholder="Use your @feualabang.edu.ph email" required>
-                <i class='bx bxs-user'></i>
+                
             </div>
 
             <div id="emailResponse" style="margin-right:10px;"></div>
 
             <div class="input-box">
                 <p>Password</p>
-                <input type="password" id="password" placeholder="Password" required>
-                <i class='bx bxs-user'></i>
-            </div>
+                <div class="input-wrapper">
+                  <input type="password" id="password" placeholder="Password" required>
+                  <i class='bx bxs-low-vision' id="togglePassword" style="cursor: pointer;"></i>
+                </div></div>
 
             <div class="input-box">
                 <p> Student Number</p>
                 <input type="text" id="Id" placeholder="Student Number" required>
-                <i class='bx bxs-user'></i>
+               
             </div>
 
             <div class="Course">

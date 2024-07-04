@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #1B1919;
+      position: relative;
+    }
+
+      /* Whole  Form for register */
+      .Register {
+        display: flex;
+        flex-direction: column; 
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        width: 420px;
+        background-color: #1B1919;
+        border: 2px solid; 
+        color: white;
+        padding: 10px;
+        border-radius: 20px;
+        z-index: 2;
+      }
+      
+      .Register h1 {
+        padding-top: 20px;
+        font-size: 30px;
+        text-align: left;
+        color: white;
+      }
+
+      .Register h2 {
+        padding-top: 10px;
+        font-size: 30px;
+        text-align: center;
+        color: white;
+      }
+
+      .Register p {
+        font-size: 14px;
+        color: white;
+      }
+      
+      .Register .login-link {
+        text-align: left;
+        position: relative;
+        text-align: center;
+        padding-top: 10px;
+      }
+      
+      .Register .login-link p a:hover {
+        text-decoration: underline;
+        color: #F50CA0;
+      }
+      
+      .Register .login-link p a {
+        text-decoration: underline;
+        color: #D284AC;
+        font-weight: 600;
+      }
+      button {
+        position: relative; /* Required for tooltip positioning */
+        background-color: #D284AC;
+        border: 0;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        color: #fff;
+        font-family: inherit;
+        font-size: 20px;
+        padding: 20px 40px;
+        border-radius: 40px;
+      }
+      
+      .button-container {
+        display: flex;
+        justify-content: space-around; 
+        align-items: center;
+        padding: 30px;
+        width: 100%; 
+      }
+      
+      .Student, .Teacher {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+      }
+      
+      button:hover {
+        background-color: #F50CA0;
+        color: black;
+      }
+      
+      /* Tooltip etu*/
+      button::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 100%; 
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: black;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s;
+        font-size: 14px;
+      }
+      
+      button:hover::before {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+    

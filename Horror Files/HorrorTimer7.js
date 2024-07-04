@@ -220,11 +220,6 @@ const user = auth.currentUser;
                         }, 12000);
                     
                         setTimeout(() => {
-                            document.getElementById("sentence37").style.display = "block";
-                            document.getElementById("sentence37").classList.add("show");
-                        }, 13000);
-                    
-                        setTimeout(() => {
                             document.getElementById("sentence38").style.display = "block";
                             document.getElementById("sentence38").classList.add("show");
                         }, 16000);
@@ -276,6 +271,8 @@ const user = auth.currentUser;
                                     "};<br><br>";
                                         document.getElementById("textbox").disabled = true;
                                         document.getElementById("submitbutton").disabled = true;
+
+                                        showToast();
                                 
                                         setTimeout(() => {
                                             document.getElementById("sentence42").style.display = "block";
@@ -346,4 +343,10 @@ const user = auth.currentUser;
                                     hintText.textContent = "No more hints available.";
                                 }};
                             });
+
+                            function showToast() {
+                                var toast = document.getElementById("toast");
+                                toast.className = "toast show";
+                                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
+                            }
                     
