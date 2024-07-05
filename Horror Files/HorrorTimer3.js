@@ -42,8 +42,6 @@ async function saveUserData(user, score) {
     }
 }
 
-
-
                     document.addEventListener("DOMContentLoaded", function () {
                         document.getElementById("textbox").disabled = true;
                         document.getElementById("submitbutton").disabled = true;
@@ -85,57 +83,64 @@ async function saveUserData(user, score) {
                             window.addEventListener('scroll', updateButtonPositions);
                 
                 
-            let currentFrameIndex = 0;
-            let interval = 1000;
-            const frames3 = document.querySelectorAll(".pixel-art-frame");
-            let animationInterval;
-            
-            function showNextFrame(frames) {
-                frames[currentFrameIndex].classList.remove("active");
-                
-                if (frames[currentFrameIndex].id === 'img25') {
-                    currentFrameIndex = frames[currentFrameIndex + 1].id === 'img26' ? currentFrameIndex + 1 : currentFrameIndex;
-                } else if (frames[currentFrameIndex].id === 'img26') {
-                    currentFrameIndex = frames[currentFrameIndex - 1].id === 'img25' ? currentFrameIndex - 1 : currentFrameIndex;
-                } else {
-                    currentFrameIndex = (currentFrameIndex + 1) % frames.length;
-                }
-            }
-        }
-
-                function displayRemainingFrames() {
-                    clearInterval(animationInterval);
-                
-                    const remainingFrames = [
-                        ...frames3, 
-                        document.getElementById("img27"),
-                        document.getElementById("img28"),
-                    ];
-                
-                    let remainingIndex = 0;
-                    const remainingInterval = 1000;
-                
-                    function showNextRemainingFrame() {
-                        remainingFrames[remainingIndex].classList.remove("active");
-                        remainingIndex++;
-                        
-                        if (remainingIndex < remainingFrames.length) {
-                            remainingFrames[remainingIndex].classList.add("active");
-                            if (remainingFrames[remainingIndex].id === 'img28') {
-                                clearInterval(remainingAnimationInterval);
+                            let currentFrameIndex = 0;
+                            let interval = 1000;
+                            const frames3 = document.querySelectorAll(".pixel-art-frame");
+                            let animationInterval;
+                            
+                            function showNextFrame(frames) {
+                                frames[currentFrameIndex].classList.remove("active");
+                                
+                                if (frames[currentFrameIndex].id === 'img25') {
+                                    currentFrameIndex = frames[currentFrameIndex + 1].id === 'img26' ? currentFrameIndex + 1 : currentFrameIndex;
+                                } else if (frames[currentFrameIndex].id === 'img26') {
+                                    currentFrameIndex = frames[currentFrameIndex - 1].id === 'img25' ? currentFrameIndex - 1 : currentFrameIndex;
+                                } else {
+                                    currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+                                }
+                                
+                                frames[currentFrameIndex].classList.add("active");
                             }
-                        }
-                    }
-                
-                    remainingFrames[0].classList.add("active");
-                    const remainingAnimationInterval = setInterval(showNextRemainingFrame, remainingInterval);
-                }
-            
-                setTimeout(() => {
-                    startAnimation(frames3); 
-                }, 1000);
-            
-            
+                            
+                            function startAnimation(frames) {
+                                currentFrameIndex = 0; // Reset index
+                                frames[currentFrameIndex].classList.add("active");
+                                animationInterval = setInterval(() => showNextFrame(frames), interval);
+                            }
+                            
+                            function displayRemainingFrames() {
+                                clearInterval(animationInterval);
+                            
+                                const remainingFrames = [
+                                    ...frames3, 
+                                    document.getElementById("img27"),
+                                    document.getElementById("img28"),
+                                ];
+                            
+                                let remainingIndex = 0;
+                                const remainingInterval = 1000;
+                            
+                                function showNextRemainingFrame() {
+                                    remainingFrames[remainingIndex].classList.remove("active");
+                                    remainingIndex++;
+                            
+                                    if (remainingIndex < remainingFrames.length) {
+                                        remainingFrames[remainingIndex].classList.add("active");
+                                        if (remainingFrames[remainingIndex].id === 'img28') {
+                                            clearInterval(remainingAnimationInterval);
+                                        }
+                                    }
+                                }
+                            
+                                remainingFrames[0].classList.add("active");
+                                const remainingAnimationInterval = setInterval(showNextRemainingFrame, remainingInterval);
+                            }
+                            
+                          
+                            setTimeout(() => {
+                                startAnimation(frames3); 
+                            }, 1000);
+                            
                setTimeout(() => {
                             document.getElementById("sentence10").style.display = "block";
                             document.getElementById("sentence10").classList.add("show");
