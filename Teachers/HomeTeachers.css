@@ -1,0 +1,162 @@
+body {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    background-color: white;
+    position: relative;
+}
+
+h1 {
+    font-family: "Bungee Inline", sans-serif;
+    font-size: 24px;
+    color: #F50CA0
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%; 
+        height: auto; 
+        position: relative; 
+    }
+    .content {
+        margin-left: 0;
+        width: 100%; 
+    }
+}
+
+.sidebar {
+    height: 100vh; 
+    width: 250px; 
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+.sidebar .disabled {
+    pointer-events: none;
+    background-color: #F50CA0;
+    cursor: default;
+  }
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar .home-link {
+    width: 220px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    position:absolute;
+    bottom: 10px;
+    padding: 10px;
+    background: none;
+    cursor: pointer;
+}
+
+.sidebar .home-link img {
+    width: 50px; 
+    height: 50px; 
+    margin-right: 8px;
+}
+
+.sidebar a,
+.sidebar button {
+    display: block;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    
+}
+
+.sidebar a:hover,
+.sidebar button:hover,
+.sidebar .home-link:hover {
+    background-color: #D284AC;
+}
+
+.content {
+    position: relative;
+    top: -19vw;
+    margin-left: 280px; 
+    padding: 20px;
+    width: calc(100% - 250px);
+    border: 2px solid;
+    font-family: "Courier Prime", monospace;
+}
+
+.sidebar .back-button {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px; 
+}
+
+.sidebar .back-button i {
+    margin-right: 8px; 
+}
+
+.sidebar .back-button:hover {
+    background-color: #F50CA0;
+}
+
+h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: xx-large;
+    font-weight: 700px;
+    padding-left: 15px;
+}
+
+.content p{
+    padding-left: 50px;
+    font-family: "Courier Prime", monospace;
+}
+
+table {
+    position: absolute;
+    top: 5vw;
+    width: 70%;
+    border-collapse: collapse;
+    margin-left: 15%;
+    margin-bottom: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+    padding: 12px;
+    
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.dropdown {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    font-family: "Courier Prime", monospace;
+}
+
+#Select{
+    font-family: "Courier Prime", monospace;
+    padding-left: 50px;
+}

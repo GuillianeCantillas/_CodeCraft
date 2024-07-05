@@ -71,7 +71,6 @@ body {
     display: none;
   
     & .title {
-      font-family: 'arial-black';
       text-transform: uppercase;
       font-size: 45px;
     }
@@ -80,7 +79,8 @@ body {
       line-height: 1.7;
       margin: 1rem 0 1rem;
       font-size: 0.9rem;
-    }
+      font-family: "Courier Prime", monospace;
+  }
   
     & button {
       width: fit-content;
@@ -318,10 +318,11 @@ body {
   }
 
 footer {
+  height: 10vh;
   font-family: 'Russo One', sans-serif;
-  margin-top: 1500px;
+  margin-top: 2500px;
   text-align: right;
-  border-top: 1px solid #ccc;
+  background-color: #171415;
   padding-top: 4px;
 }
 
@@ -339,3 +340,5 @@ footer nav a {
 footer nav a:hover {
   color: #333;
 }
+
+

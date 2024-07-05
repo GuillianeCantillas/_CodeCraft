@@ -47,6 +47,17 @@
         <div id="hintBox" style="display:none;">
             <p id="hintText"></p>
         </div>
+
+        <div class="form">
+            <form id="answerForm" onsubmit="checkAnswer8(); return false;">
+                <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence8();"><br>
+                <span id="output" style="font-size: 14px;"></span><br>
+                <input type="submit" value="Submit" id="submitbutton">
+            </form>
+        </div>
+        <div class="timer-container">
+            <div id="timer">Time Left: 60 minutes </div>
+        </div>
 </div>
 
 <!--
@@ -62,17 +73,8 @@
                         &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #FF7F3E;">int</span> <span style="color: #1679AB;">ChestNumber</span> = ________<span style="color: #FF7F3E;">;</span><br>
                         &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #FF7F3E;"> System.out.println(<span style="color: #1679AB;">ChestNumber</span>); </span> }<br><br></div>
                  <div id="sentence9" class="sentence"> An integer in Java is a memory location that can hold an integer, a positive or negative non-decimal number. It is denoted by the keyword, 'int'. </div>
-             </div>
-    
-             <div class="form">
-                <form id="answerForm" onsubmit="checkAnswer8(); return false;">
-                    <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence8();"><br>
-                    <span id="output" style="font-size: 14px;"></span><br>
-                    <input type="submit" value="Submit" id="submitbutton">
-                </form>
+             <div id="toastContainer" class="toast1"></div>
             </div>
-
-
 </body>
 
 </html>

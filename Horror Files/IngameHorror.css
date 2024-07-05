@@ -458,3 +458,65 @@ body {
   from {top: 20px; opacity: 1;}
   to {top: 0; opacity: 0;}
 }
+
+.timer-container {
+  text-align: center;
+  background-color: transparent;
+  color: white;
+  font-family: "Averia Serif Libre", serif;  
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -6vh;
+  left: -1vw; 
+}
+
+#timer {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.toast1 {
+  visibility: hidden;
+  width: 30px;
+  background-color: black;
+  text-align: center;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 1;
+  left: 43%;
+  top: 40px; 
+  transform: translateX(-50%); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 10px;  
+}
+
+.toast1.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+  animation: fadein 0.5s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}

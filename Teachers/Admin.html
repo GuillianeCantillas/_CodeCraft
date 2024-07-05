@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="Admin.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Russo+One&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Jacquard+12+Charted&family=Syncopate:wght@400;700&family=Workbench&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bokor&family=Ewert&family=Jacquard+12+Charted&family=Syncopate:wght@400;700&family=Workbench&display=swap" rel="stylesheet">
+<script src="Admin.js" defer  type="module"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="back-button" onclick="history.back()">
+            <i class='bx bx-arrow-back'></i> Back
+        </div>
+        <h2>System Information</h2>
+
+        <a href="#" class="disabled"><i class='bx bxs-user' ></i> Administrator</a>
+        <a href="https://guillianecantillas.github.io/_CodeCraft/Teachers/HomeTeachers.html"><i class='bx bxs-home' ></i> Home</a>
+        <a href="https://guillianecantillas.github.io/_CodeCraft/Teachers/Players.html"><i class='bx bx-group'></i> Players</a>
+        <a href="https://guillianecantillas.github.io/_CodeCraft/Teachers/AdminSupp.html"><i class='bx bx-book-open' ></i> Supplementary Materials</a>
+        <a href="https://guillianecantillas.github.io/_CodeCraft/Teachers/Usage.html"><i class='bx bxs-objects-vertical-bottom' ></i> Usage</a>
+        
+            <div class="home-link" onclick="window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageUser.html';">
+                <img src="Cyberpink.png" alt="Home">
+                <h1>CodeCraft</h1>
+            </div>
+    </div>
+
+    <div class="content"> 
+        <h3>Welcome, <span id=userName></span>!</h3>      
+        <div class="textbox">
+            <p id="emailAddress"></p>
+            <p id="Course"></p>
+            <button class="edit-profile" id="edit">Edit Profile</button>
+            <button class="logout-button" id="logoutBtn">Log out</button>
+            <img src="feulogo.png" id="logo-image">
+          </div>
+    </div>
+
+    <div class="roles">
+        <h2>Administrator Privileges</h2>
+        <div class="list">
+            <div class="column">
+                <h4>User Management</h4>
+                <p>Approve or reject new user registrations.</p>
+                <p>Monitor user activity and ensure compliance.</p>
+            </div>
+            <div class="column">
+                <h4>Content Management</h4>
+                <p>Inspire the creation, modification and deletion of coding challenges and games.</p>
+                <p>Update game rules, instructions, and guidelines.</p>
+            </div>
+            <div class="column">
+                <h4>Curriculum Management</h4>
+                <p>Design and organize coding courses or modules</p>
+                <p>Create and manage educational content, such as tutorials and lessons</p>
+                <p>Monitor and evaluate students' progress through the curriculum</p>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

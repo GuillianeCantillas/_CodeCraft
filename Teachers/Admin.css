@@ -1,0 +1,252 @@
+body {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    background-color: white;
+    position: relative;
+}
+
+h1 {
+    font-family: "Bungee Inline", sans-serif;
+    font-size: 24px;
+    color: #F50CA0
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%; 
+        height: auto; 
+        position: relative; 
+    }
+    .content {
+        margin-left: 0;
+        width: 100%; 
+    }
+}
+
+.sidebar {
+    height: 100vh; 
+    width: 250px; 
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+.sidebar .disabled {
+    pointer-events: none;
+    background-color: #F50CA0;
+    cursor: default;
+  }
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar .home-link {
+    width: 220px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    position:absolute;
+    bottom: 10px;
+    padding: 10px;
+    background: none;
+    cursor: pointer;
+}
+
+.sidebar .home-link img {
+    width: 50px; 
+    height: 50px; 
+    margin-right: 8px;
+}
+
+.sidebar a,
+.sidebar button {
+    display: block;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    
+}
+
+.sidebar a:hover,
+.sidebar button:hover,
+.sidebar .home-link:hover {
+    background-color: #D284AC;
+}
+
+.content {
+    position: relative;
+    top: -19vw;
+    margin-left: 280px; 
+    padding: 20px;
+    width: calc(100% - 250px);
+    font-family: "Courier Prime", monospace;
+}
+
+.sidebar .back-button {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px; 
+}
+
+.sidebar .back-button i {
+    margin-right: 8px; 
+}
+
+.sidebar .back-button:hover {
+    background-color: #F50CA0;
+}
+
+h3 {
+    position: fixed;
+    top: 4vw;
+    font-family: 'Russo One', sans-serif;
+    font-size: xx-large;
+    font-weight: 700px;
+    padding-left: 30px;
+}
+
+.content p{
+    padding-left: 50px;
+    font-family: "Courier Prime", monospace;
+}
+
+.textbox {
+    position: relative;
+    top: 35vh;
+    left: 2vw;
+    border: 2px solid #ccc;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 50px;
+    padding: 10px; 
+    width: 300px;
+    height: 500px; 
+    max-height: 100%;
+    font-size: 18px;
+    background-color: #f8f8f8; 
+    font-family: "Courier Prime", monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.textbox p {
+  margin: 5px 0; 
+  padding: 0;
+}
+
+.edit-profile{
+    width: 30%;
+    height: 30px;
+    background: #D284AC;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    font-weight: 100;
+    position: absolute; 
+    top: 450px;
+    z-index: 1;
+}
+
+.logout-button {
+    width: 30%;
+    height: 30px;
+    background: #D284AC;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, -1);
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    font-weight: 100;
+    position: absolute; 
+    top: 550px;
+    z-index: 1;
+  }
+  
+  .logout-button:hover,
+  .edit-profile:hover{
+    background-color: #F50CA0;
+    color: black;
+  }
+
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.icon-button:focus {
+    outline: none;
+}
+
+#logo-image{
+    width: 90px;
+    position:absolute;
+    top: 40px;
+  }
+
+  
+.roles {
+    font-family: 'Russo One', sans-serif;
+    width: 60vw;;
+    background-color: rgba(255, 255, 255, 0.716); 
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    right: 25vw;
+    top: -4vh;
+    box-shadow: 0 10px 20px #D284AC; 
+    text-align: center;
+}
+
+.list {
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.column {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.column h4 {
+    text-align: center;
+}
+
+.column p {
+    text-align: center;
+}
