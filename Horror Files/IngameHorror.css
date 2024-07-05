@@ -21,7 +21,7 @@ body {
   font-family: "Bungee Inline", sans-serif;
   font-size: 25px;
   color: #F50CA0;
-  bottom: 35px;
+  bottom: 20px;
   left: 50px; 
 }
 .homeheader h2 {
@@ -115,7 +115,7 @@ body {
   position: fixed;
   top: 1px;
   right: 1px;
-  width: 30vw;
+  width: 40vw;
   height: 100vh;
   max-width: 600px;
   font-family: "Courier Prime", monospace;
@@ -223,13 +223,13 @@ body {
 }
 
 #sentence5, #sentence9, #sentence14, #sentence23, #sentence30, #sentence42{
-  color: white;
+  color: #D284AC;
   font-size: 18px;
 }
 
 #sentence48, #sentence55{
-  color: white;
-  font-size: 18px;
+  color: gray;
+  font-size: 12px;
 }
 
 #sentence19, #sentence34{
@@ -416,15 +416,17 @@ body {
 
 .toast {
   visibility: hidden;
-  width: 350px;
-  background-color: transparent;
+  width: 300px;
+  background-color: #333;
+  color: #D284AC;
   text-align: center;
   border-radius: 5px;
   position: fixed;
   z-index: 1;
-  left: 25%;
+  left: 50%;
   top: 20px;  /* Position at the top */
   transform: translateX(-50%);  /* Center horizontally */
+  font-size: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,6 +434,7 @@ body {
 
 .toast img {
   width: 100%;
+  border-radius: 5px;
 }
 .toast.show {
   visibility: visible;

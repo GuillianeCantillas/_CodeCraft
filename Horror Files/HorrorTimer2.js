@@ -38,6 +38,7 @@ const user = auth.currentUser;
                         const button3 = document.querySelector('.button3');
                         const scores = document.getElementById('score-container');
                         const hinting = document.getElementById('hintBox');
+                        const chestopenAudio = document.getElementById('chestopen');
                         let hintIndex = 0;
                         const hints = [
                         "Hint 1: Would you really need a hint for this?",
@@ -79,7 +80,10 @@ const user = auth.currentUser;
                 frames[currentFrameIndex].classList.remove("active");
                 currentFrameIndex = (currentFrameIndex + 1) % frames.length;
                 frames[currentFrameIndex].classList.add("active");
-        
+
+                if (frames[currentFrameIndex].id === 'img16') {
+                    chestopenAudio.play();
+                }
                 // Last Frame
                 if (frames[currentFrameIndex].id === 'img19') {
                     clearInterval(animationInterval);

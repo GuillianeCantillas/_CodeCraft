@@ -38,6 +38,7 @@ const user = auth.currentUser;
                         const scoreElement = document.getElementById('score');
                         const scores = document.getElementById('score-container');
                         const hinting = document.getElementById('hintBox');
+                        const rewardnotifAudio = document.getElementById('rewardnotif');
                         let score = 0;
                         let hintIndex = 0;
                         const hints = [
@@ -110,6 +111,7 @@ const user = auth.currentUser;
                         window.checkAnswer4 = function () {
                             const userInput = document.getElementById("textbox").value.trim().toLowerCase();
                             const correctAnswer = "open";
+                            const dooropenAudio = document.getElementById('dooropen');
                             const spanClass = userInput === correctAnswer ? 'correct' : 'incorrect';
                             const sentence = document.getElementById("sentence4");
             
@@ -123,6 +125,7 @@ const user = auth.currentUser;
         
                                 document.getElementById("textbox").disabled = true;
                                 document.getElementById("submitbutton").disabled = true;
+                                dooropenAudio.play();
             
                                 showToast();
             
@@ -188,6 +191,7 @@ const user = auth.currentUser;
                 function showToast() {
                 var toast = document.getElementById("toast");
                 toast.className = "toast show";
+                rewardnotifAudio.play(); // Play reward notification sound
                 setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
             }
         });
