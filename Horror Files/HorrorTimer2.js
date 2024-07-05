@@ -143,6 +143,55 @@ document.addEventListener("DOMContentLoaded", function () {
             let score = Scoring(timeTakenInSeconds);
             pauseTimer();
 
+                    
+                        function updateButtonPositions() {
+                            const containerRect = container.getBoundingClientRect();
+                            
+                            button1.style.left = `${containerRect.left + -60}px`;
+                            button1.style.top = `${containerRect.top + 310}px`; //Reset
+            
+                            button2.style.left = `${containerRect.left + 20}px`;
+                            button2.style.top = `${containerRect.top + 310}px`; //Undo
+            
+                            button3.style.left = `${containerRect.left + 760}px`;
+                            button3.style.top = `${containerRect.top + 310}px`; // Hint
+            
+                            scores.style.left = `${containerRect.left + 740}px`;
+                            scores.style.top = `${containerRect.top + -255}px`; // Score Board
+            
+                            hinting.style.left = `${containerRect.left + 710}px`;
+                            hinting.style.top = `${containerRect.top + 340}px`; // Hints na talaguh
+                        }
+            
+                        updateButtonPositions();
+                        window.addEventListener('resize', updateButtonPositions);
+                        window.addEventListener('scroll', updateButtonPositions);
+            
+            let currentFrameIndex = 0;
+            let interval = 1000;
+            const frames2 = container.querySelectorAll(".pixel-art-frame");
+            let animationInterval;
+        
+            function showNextFrame(frames) {
+                frames[currentFrameIndex].classList.remove("active");
+                currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+                frames[currentFrameIndex].classList.add("active");
+
+                if (frames[currentFrameIndex].id === 'img16') {
+                    chestopenAudio.play();
+                }
+                // Last Frame
+                if (frames[currentFrameIndex].id === 'img19') {
+                    clearInterval(animationInterval);
+                }
+            }
+        
+            function startAnimation(frames) {
+                currentFrameIndex = 0; // Reset index
+                frames[currentFrameIndex].classList.add("active");
+                animationInterval = setInterval(() => showNextFrame(frames), interval);
+            }
+        
             setTimeout(() => {
                 document.getElementById("sentence9").style.display = "block";
                 document.getElementById("sentence9").classList.add("show");

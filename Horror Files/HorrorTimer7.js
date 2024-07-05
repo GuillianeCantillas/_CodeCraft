@@ -90,6 +90,7 @@ const user = auth.currentUser;
                                 const sentence = document.getElementById(id);
                                 if (sentence && sentence.classList.contains('show')) {
                                     sentence.classList.add('flashing');
+                                    lightningstrikeAudio.play();
                                 } else if (!sentence) {
                                     console.warn(`Sentence with ID ${id} not found.`);
                                 }
@@ -182,6 +183,8 @@ const user = auth.currentUser;
                         let interval = 1000;
                         const frames7 = container.querySelectorAll(".pixel-art-frame");
                         let animationInterval;
+                        const lightningstrikeAudio = document.getElementById("lightningstrike"); // Get the audio element
+
                     
                         function showNextFrame(frames) {
                             frames[currentFrameIndex].classList.remove("active");
@@ -218,6 +221,11 @@ const user = auth.currentUser;
                             document.getElementById("sentence36").style.display = "block";
                             document.getElementById("sentence36").classList.add("show");
                         }, 12000);
+                    
+                        setTimeout(() => {
+                            document.getElementById("sentence37").style.display = "block";
+                            document.getElementById("sentence37").classList.add("show");
+                        }, 13000);
                     
                         setTimeout(() => {
                             document.getElementById("sentence38").style.display = "block";
@@ -271,8 +279,6 @@ const user = auth.currentUser;
                                     "};<br><br>";
                                         document.getElementById("textbox").disabled = true;
                                         document.getElementById("submitbutton").disabled = true;
-
-                                        showToast();
                                 
                                         setTimeout(() => {
                                             document.getElementById("sentence42").style.display = "block";
@@ -343,10 +349,4 @@ const user = auth.currentUser;
                                     hintText.textContent = "No more hints available.";
                                 }};
                             });
-
-                            function showToast() {
-                                var toast = document.getElementById("toast");
-                                toast.className = "toast show";
-                                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
-                            }
                     

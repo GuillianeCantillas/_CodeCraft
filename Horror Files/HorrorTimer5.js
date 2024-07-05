@@ -79,6 +79,8 @@ const user = auth.currentUser;
                                 const sentence = document.getElementById(id);
                                 if (sentence.classList.contains('show')) {
                                     sentence.classList.add('flashing');
+                                    lightningstrikeAudio.play();
+
                                 }
                             });
                     
@@ -166,7 +168,8 @@ const user = auth.currentUser;
                         let interval = 1000;
                         const frames5 = container.querySelectorAll(".pixel-art-frame");
                         let animationInterval;
-                    
+                        const lightningstrikeAudio = document.getElementById("lightningstrike"); // Get the audio element
+
                         function showNextFrame(frames) {
                             frames[currentFrameIndex].classList.remove("active");
                             currentFrameIndex = (currentFrameIndex + 1) % frames.length;

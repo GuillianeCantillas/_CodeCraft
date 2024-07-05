@@ -284,9 +284,8 @@ document.addEventListener("DOMContentLoaded", function () {
             function showToast() {
                 var toast = document.getElementById("toast");
                 toast.className = "toast show";
-                setTimeout(function () {
-                    toast.className = toast.className.replace("show", "");
-                }, 5000);
+                rewardnotifAudio.play(); // Play reward notification sound
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
             }
 
             function showToast1(message) {

@@ -43,6 +43,7 @@ async function saveUserData(user, score) {
 }
 
 
+
                     document.addEventListener("DOMContentLoaded", function () {
                         document.getElementById("textbox").disabled = true;
                         document.getElementById("submitbutton").disabled = true;
@@ -99,15 +100,8 @@ async function saveUserData(user, score) {
                 } else {
                     currentFrameIndex = (currentFrameIndex + 1) % frames.length;
                 }
-            
-                frames[currentFrameIndex].classList.add("active");
             }
-            
-                function startAnimation(frames) {
-                    currentFrameIndex = 0; // Reset index
-                    frames[currentFrameIndex].classList.add("active");
-                    animationInterval = setInterval(() => showNextFrame(frames), interval);
-                }
+        }
 
                 function displayRemainingFrames() {
                     clearInterval(animationInterval);
