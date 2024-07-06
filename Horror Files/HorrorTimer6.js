@@ -54,7 +54,6 @@ async function saveUserData(user, score) {
                         const scores = document.getElementById('score-container');
                         const hinting = document.getElementById('hintBox');
 
-
                         let hintIndex = 0;
                         const hints = [
                                 "Hint 1: This statement immediately exits the nearest enclosing loop",

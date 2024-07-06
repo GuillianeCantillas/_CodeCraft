@@ -54,6 +54,12 @@ async function saveUserData(user, score) {
                         const scores = document.getElementById('score-container');
                         const hinting = document.getElementById('hintBox');
                         const answerForm = document.getElementById('answerForm');
+                        let hintIndex = 0;
+                        const hints = [
+                            "Hint 1: This statement performs an action until a certain criteria is false.",
+                            "Hint 2: Use this to avoid executing certain code within the loop for specific conditions.",
+                            "Hint 3: Bypasses the remaining statements in the loop body and jumps to the next iteration."];
+
                         
                         const sentences = [
                             "sentence16",
