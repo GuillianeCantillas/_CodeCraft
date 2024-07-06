@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, 'monospace';
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, 'monospace', 'Courier Prime';
 }
 
 body {
@@ -10,13 +10,13 @@ body {
   align-items: center;
   min-height: 100vh;
   justify-content: center;
-  background-color: gray;
+  background-color:#111211;
   position: relative;
 }
 
 .homeheader h1, .homeheader h2, .homeheader h3 {
   position: absolute;
-  margin: 0; 
+  margin: 0;
 }
 
 .homeheader h1 {
@@ -24,15 +24,15 @@ body {
   font-size: 25px;
   color: #F50CA0;
   top: 20px;
-  right: 50px; 
+  right: 50px;
 }
 
 .homeheader h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
-  color: black;
+  color: whitesmoke;
   top: 50px;
-  right: 110px; 
+  right:  110px;
 }
 
 .homeheader h3 {
@@ -40,43 +40,42 @@ body {
   font-size: 15px;
   color: #D284AC;
   top: 70px;
-  right: 80px; 
+  right: 80px;
 }
 
-#pixel-art-container1, #pixel-art-container2, #pixel-art-container3{
+#pixel-art-container1, #pixel-art-container2, #pixel-art-container3 {
   width: 1000px;
   height: 570px;
   position: absolute;
   top: 20px;
-  margin: 0 auto; 
+  margin: 0 auto;
   border: white;
   border-style: solid;
   border-width: 5px;
 }
 
-#pixel-art-container{
-  margin: 0 auto; 
+#pixel-art-container {
+  margin: 0 auto;
   border: white;
   border-style: solid;
   border-width: 5px;
 }
-
 
 .pixel-art-frame {
-  width: 100%; 
+  width: 100%;
   height: 100%;
-  position: absolute; 
+  position: absolute;
   top: 0;
   left: 0;
-  opacity: 0; 
+  opacity: 0;
 }
 
 .pixel-art-frame:first-child {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .pixel-art-frame.active {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .buttons {
@@ -96,7 +95,7 @@ body {
   font-size: 14px;
   color: white;
   font-weight: 100;
-  position: absolute; 
+  position: absolute;
   z-index: 1;
 }
 
@@ -107,16 +106,17 @@ body {
 
 .text-box {
   position: absolute;
-  bottom: 6vh; /* space for the input and submit button */
-  width: 70vw;
-  height: 30vh;
+  bottom: 6vh;
+  width: 1000px; /* Match the width of the pixel-art-container */
+  max-height: 30vh;
   font-size: 18px;
   color: #fff;
   background-color: black;
   padding: 10px;
   text-align: left;
-  overflow-y: auto; /* vertical scrolling */
+  overflow-y: auto;
   transition: width 0.5s ease-in-out;
+  font-family: "Courier Prime", monospace; /* unchanged */
 }
 
 .text-box.minimized {
@@ -139,7 +139,8 @@ body {
 }
 
 .form input[type="text"] {
-  width: 70vw;
+  width: 62vw;
+  left: 17.1vw;
   height: 5vh;
   padding: 1.5vh;
   border: 0.2vw solid #ccc;
@@ -149,15 +150,14 @@ body {
   color: white;
   position: fixed;
   bottom: 3vh;
-  right: 15vw;
-  z-index: 1000; /* stays on top */
+  z-index: 1000;
   transition: width 0.5s ease-in-out;
 }
 
 .form input[type="submit"] {
   position: fixed;
   bottom: 3vh;
-  right: 15vw;
+  right: 17.2vw;
   width: 9vw;
   height: 5vh;
   padding: 1.5vh;
@@ -168,8 +168,9 @@ body {
   background-color: #D284AC;
   color: white;
   cursor: pointer;
-  z-index: 1000; /* stays on top */
+  z-index: 1000;
   transition: width 0.5s ease-in-out;
+  
 }
 
 .form input[type="submit"]:hover {
@@ -200,15 +201,21 @@ body {
 
 .sentence {
   opacity: 0;
-  transition: opacity 2s ease-in-out;
-  font-family: 'Courier New', Courier, monospace;
+  transition: opacity 4s ease-in-out;
+  font-family: "Courier Prime", monospace;
+  display: block;
 }
 
 .sentence.show {
   opacity: 1;
 }
 
-#sentence13 {
+#sentence10, #sentence14, #sentence18, #sentence22, #sentence26 {
+  color: gray;
+  font-size: 12px;
+}
+
+#sentence6, #sentence30 {
   color: gray;
   font-size: 12px;
 }
@@ -219,11 +226,12 @@ body {
   gap: 10px;
   visibility: visible;
 }
-
 #score-container {
   width: 15%;
-  height: 10%;
+  height: 9%;
   position: absolute;
+  right: 20px;
+  top: 10px;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 10px 20px;
   border-radius: 10px;
@@ -241,23 +249,67 @@ body {
   width: 20%;
   height: 20%;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: transparent;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin-top: 10px;
+  margin-bottom: 10px;   
+  margin-right: 60px;   
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  display: none; 
+  display: none;
 }
 
 #hintText {
   font-family: 'Arial', sans-serif;
-  color: #333;
+  color: #ffffff;
   font-size: 14px;
 }
 
-.highlight {
-  border: 2px solid #D284AC;
-  box-shadow: 0 0 30px #D284AC;
+.toast {
+  visibility: hidden;
+  width: 300px;
+  background-color: #333;
+  color: #D284AC;
+  text-align: center;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.toast img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+  animation: fadein 0.5s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 20px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 20px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 20px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 20px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
