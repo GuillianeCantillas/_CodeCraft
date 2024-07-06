@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly</title>
+    <link rel="stylesheet" href="InGameAnomaly.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="AnomalyTimer4.js" defer  type="module"></script>
+</head>
+
+<body>
+    <audio src="bootpc.wav"  autoplay loop> 
+        Your browser does not support this audio type.
+    </audio>
+
+    <audio src="retro1.mp3"  autoplay loop> 
+        Your browser does not support this audio type.
+    </audio>
+
+    <div class="homeheader">
+        <h1>CodeCraft</h1>
+        <h2>by </h2>
+        <h3>CyberPink</h3>
+    </div>
+
+    <div id="pixel-art-container"> <!--start pics-->
+        <p id="Camera1">⦿ Camera 1 - Classroom </p>
+        <img id="img2" src="room1.png" class="pixel-art-frame active"> 
+        <img id="img3" src="room2.png" class="pixel-art-frame">
+
+        <div id="pixel-art-container2">
+            <p id="Camera2">⦿ Camera 2 - Mac Lab</p>
+            <img id="img2" src="mac lab1.png" class="pixel-art-frame2 active"> 
+            <img id="img3" src="mac lab2.png" class="pixel-art-frame2">
+            
+                <div id="pixel-art-container3">
+                    <p id="Camera3">⦿ Camera 3 - Physics Lab</p>
+                    <img id="img2" src="P6 LAB1.png" class="pixel-art-frame3 active">
+                    <img id="img3" src="P6 LAB2.png" class="pixel-art-frame3">
+                    
+                    <div id="pixel-art-container4">
+                        <p id="Camera4">⦿ Camera 4 - Computer Lab</p>
+                        <img id="img2" src="COMP LAB1.png" class="pixel-art-frame4 active">
+                        <img id="img3" src="COMP LAB2.png" class="pixel-art-frame4">
+                        <img id="img4" src="COMP LAB3.png" class="pixel-art-frame4">
+                        <img id="img5" src="COMP LAB4.png" class="pixel-art-frame4">
+
+                        <div id="pixel-art-container5">
+                            <p id="Camera5">⦿ Camera 5 - Elevator</p>
+                            <img id="img2" src="elev1.png" class="pixel-art-frame5 active">
+                            <img id="img3" src="elev2.png" class="pixel-art-frame5">
+
+                            <div id="pixel-art-container6">
+                                <p id="Camera6">⦿ Camera 6 - Hallway</p>
+                                <img id="img2" src="hallway1.png" class="pixel-art-frame6 active">
+                                <img id="img3" src="hallway2.png" class="pixel-art-frame6"> <!--end pics-->
+
+
+    <div class="buttons">
+        <button type="reset" class="button1" onclick="resetForm()">Reset</button>
+        <button type="button" class="button2" onclick="undoInput()">Undo</button>
+        <button type="button" class="button3" onclick="showHint()">Hint</button>
+    </div>
+
+    <div id="score-container">
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <div id="hintBox" style="display:none;">
+        <p id="hintText"></p>
+    </div>
+
+    <div class="form">
+        <form id="answerForm" onsubmit="checkAnswer4(); return false;">
+            <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence4();"><br>
+            <span id="output" style="font-size: 14px;"></span><br>
+            <input type="submit" value="Submit" id="submitbutton">
+        </form>
+    </div>
+</div>
+    
+<!--
+    #1679AB - variables
+    #FF7F3E - syntax
+    #A2C579 - " "
+    #AF47D2 - function
+-->
+         <!--2nd code-->   
+         <div class="text-box">
+                <div id="sentence1" class="sentence show">At the Computer Laboratory, Marco, the diligent guard, watched over the rows of CCTV monitors.<br><br> </div>
+                <div id="sentence2" class="sentence">As he sipped his coffee, a flicker caught his eye—a familiar figure moving across the screen.<br><br></div>
+                <div id="sentence3" class="sentence"> Marco leaned in closer, recognizing the distinct silhouette of a logo again.<br><br></div>
+                <div id="sentence4" class="sentence">
+        
+                    <span style="color: #FF7F3E;">int</span> <span style="color: #1679AB;">i</span> = <span style="color: #A2C579;">0</span>;<br><br>
+                    ______ <span style="color: #FF7F3E;">(i < 5)</span> { <br>
+                    &nbsp; &nbsp; <span style="color: #FF7F3E;">cout</span> << <span style="color: #1679AB;">i</span> << <span style="color: #FF7F3E;">"\n"</span>;<br>
+                    &nbsp; &nbsp; <span style="color: #1679AB;">i++</span>;<br>
+                    } <br><br></div>
+                <div id="sentence5" class="sentence"> while is a control flow statement that allows you to repeatedly execute a block of code as long as a specified condition is true. It is a pre-test loop, meaning the condition is evaluated before the loop body is executed. If the condition is false initially, the loop body will not be executed at all.<br><br> </div>
+        <!-- end of 2nd code-->
+        </div>
+
+    <!-- <div id="toast" class="toast">
+        <img src="Ranking2.png" alt="Toast Image">
+    </div>-->
+
+</body>
+</html>
