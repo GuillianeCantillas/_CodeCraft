@@ -66,8 +66,9 @@
         color: #D284AC;
         font-weight: 600;
       }
+      
       button {
-        position: relative; /* Required for tooltip positioning */
+        position: relative;
         background-color: #D284AC;
         border: 0;
         border-radius: 5px;
