@@ -31,7 +31,7 @@ loginButton.addEventListener("click", async function() {
         const userCredential = await signInWithEmailAndPassword(auth, emailValue, passwordValue);
         const user = userCredential.user;
 
-        window.location.href = 'https://guillianecantillas.github.io/CodeCraft/HomepageActual.html';
+        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html';
     } catch (error) {
         console.error("Login error:", error.message);
         alert(error.message);
