@@ -196,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("textbox").disabled = true;
         document.getElementById("submitbutton").disabled = true;
         displayRemainingFrames();
-        showToast();
         showToast1();
         let score = Scoring(timeTakenInSeconds);
         pauseTimer();
