@@ -62,6 +62,7 @@ body {
   #score-container {
     position: absolute;
     bottom: 44vh;
+    width: 100px;
     background-color: transparent;
     margin-top: 10px;
     border-radius: 10px;

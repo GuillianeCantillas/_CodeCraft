@@ -23,7 +23,7 @@ async function saveUserData(user, score) {
 
         if (userDocSnap.exists()) {
             const userData = userDocSnap.data();
-            const userName = `${userData.First_Name} ${userData.Initial} ${userData.Initial}`;
+            const userName = `${userData.First_Name} ${userData.Initial} ${userData.Last_Name}`;
             const yearLevel = userData['YearLevel'];
             const course = userData.Course;
 

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -16,18 +16,31 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-const user = auth.currentUser;
-    if (user) {
-            try {
-                await setDoc(doc(db, "users", user.uid), {
-                        elapsedTime: elapsedTime
-                            }, { merge: true });
-                            console.log("Elapsed time successfully written!");
-                        } catch (error) {
-                            console.error("Error writing document: ", error);
-                        }
-                    }
+async function saveUserData(user, score) {
+    try {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
 
+        if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
+            const userName = `${userData.First_Name} ${userData.Initial} ${userData.Last_Name}`;
+            const yearLevel = userData['YearLevel'];
+            const course = userData.Course;
+
+            const HauntedAlgorithmsRef = doc(db, "HauntedAlgorithms", user.uid);
+
+            await updateDoc(HauntedAlgorithmsRef, {
+                score7: score, 
+            });
+
+            console.log("Score updated in HauntedAlgorithms for user:", user.uid);
+        } else {
+            console.log("No such document!");
+        }
+    } catch (error) {
+        console.error("Error updating score:", error);
+    }
+}
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("textbox").disabled = true;
     document.getElementById("submitbutton").disabled = true;        
@@ -35,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const button1 = document.querySelector('.button1');
     const button2 = document.querySelector('.button2');
     const button3 = document.querySelector('.button3');
+    const scoreElement = document.getElementById('score');
     const scores = document.getElementById('score-container');
     const hinting = document.getElementById('hintBox');
     let hintIndex = 0;
@@ -112,36 +126,29 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("sentence47").classList.add("show");
         document.getElementById("textbox").disabled = false;
         document.getElementById("submitbutton").disabled = false;
+        startChallenge();
     }, 30000);
 
-const scoreElement = document.getElementById('score');
-function getScore() {
-  const score = localStorage.getItem("score");
-  return score ? parseInt(score, 10) : 0;
-};
+window.checkAnswer46 = function () {
+        const userInput = document.getElementById("textbox").value.trim().toLowerCase();
+        handleSubmission(userInput);
+        };
 
-function updateScore(newScore) {
-  localStorage.setItem("score", newScore);
-  scoreElement.textContent = newScore;
-};
-
-let score = getScore();
-scoreElement.textContent = score;
-
-let newScore = getScore();
-
-window.checkAnswer46 = function() {
-  var userInput = document.getElementById("textbox").value.trim();
+function handleSubmission(userInput) {
+    let endTime = new Date(); 
+    let timeTakenMilliseconds = endTime - startTime; 
+    let timeTakenInSeconds = Math.floor(timeTakenMilliseconds / 1000);
   var sentence46 = document.getElementById("sentence46");
   var correctAnswer = "recursion";
   var spanClass = userInput === correctAnswer ? 'correct' : 'incorrect';
 
         if (userInput === correctAnswer) {
-            newScore = score + 12; 
-            updateScore(newScore);
             sentence46.innerHTML = "<span style='color: #D284AC;'>In java, there is a technique that does the same. The only difference is that it calls itself  to do it. What is this technique?</span>  <span class='" + spanClass + "'>" + userInput + "</span> <br><br></div>";
             document.getElementById("textbox").disabled = true;
             document.getElementById("submitbutton").disabled = true;
+            showToast1();
+            let score = Scoring(timeTakenInSeconds);
+            pauseTimer();
             
                     setTimeout(() => {
                         document.getElementById("sentence48").style.display = "block";
@@ -149,17 +156,21 @@ window.checkAnswer46 = function() {
                     }, 2000);
 
                     setTimeout(() => {
-                        window.location.href = 'https://guillianecantillas.github.io/CodeCraft/IngameHorror9.html';
+                        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/IngameHorror9.html';
                     }, 12000);
+
+                    onAuthStateChanged(auth, async (user) => {
+                        if (user) {
+                            await saveUserData(user, score);
+                        } else {
+                            console.log("No user is signed in.");
+                        }
+                    });
             
         } else {
             sentence46.innerHTML = "<span style='color: #D284AC;'>In java, there is a technique that does the same. The only difference is that it calls itself to do it. What is this technique?</span>  <span class='" + spanClass + "'>" + userInput + "</span> <br><br></div>";
         };
     };
-
-    console.log("Current Score:", score);
-    console.log("New Score:", newScore);  
-
 
     window.updateSentence46 = function () {
         var userInput = document.getElementById("textbox").value.trim();
@@ -194,4 +205,86 @@ window.checkAnswer46 = function() {
             } else {
                 hintText.textContent = "No more hints available.";
             }};
+            let startTime;
+            let timer;
+            let countdown;
+            const duration = 60 * 60; 
+    
+            if (localStorage.getItem('countdown')) {
+                countdown = parseInt(localStorage.getItem('countdown'), 10); 
+            } else {
+                countdown = duration;
+            }
+    
+            function startTimer() {
+                clearInterval(timer);
+                updateTimer();
+                timer = setInterval(updateTimer, 1000);
+            }
+    
+            function pauseTimer() {
+                clearInterval(timer);
+            }
+
+    
+            function updateTimer() {
+                let hours = Math.floor(countdown / 3600); 
+                let minutes = Math.floor((countdown % 3600) / 60); 
+                let seconds = countdown % 60; 
+                let displayText = `Time left: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+                document.getElementById('timer').textContent = displayText;
+    
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    alert('Time is up!');
+                    resetTimer(); 
+                    return; 
+                }
+    
+                countdown--; 
+                localStorage.setItem('countdown', countdown.toString()); 
+            }
+    
+            function resetTimer() {
+                countdown = duration;
+                localStorage.setItem('countdown', countdown.toString()); 
+                startTimer(); 
+            }
+            
+            function startChallenge() {
+                startTime = new Date();
+                startTimer();
+            }
+                
+                function Scoring(timeTakenInSeconds) {
+                    let baseScore = 11;
+                    let bonusPoints = 0;
+    
+                    if (timeTakenInSeconds <= 30) {
+                        bonusPoints = 4;
+                        showToast1("4 bonus points");
+                    } else if (timeTakenInSeconds <= 60) {
+                        bonusPoints = 3;
+                        showToast1("3 bonus points");
+                    } else if (timeTakenInSeconds <= 120) {
+                        bonusPoints = 2;
+                        showToast1("2 bonus points");
+                    }
+    
+                    let score = baseScore + bonusPoints;
+                    scoreElement.textContent = score;
+                    return score;
+                }
+    
+                function showToast1(message) {
+                    const toastContainer = document.getElementById('toastContainer');
+                    toastContainer.textContent = message;
+                    toastContainer.className = "toast1 show";
+    
+                    setTimeout(function () {
+                        toastContainer.className = toastContainer.className.replace("show", "");
+                    }, 5000);
+                }
+    
         });
+

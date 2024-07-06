@@ -63,12 +63,17 @@
             <p id="hintText"></p>
         </div>
 
-<div class="form">
-    <form id="answerForm" onsubmit="checkAnswer22(); return false;">
-        <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence22();"><br>
-        <span id="output" style="font-size: 14px;"></span><br>
-        <input type="submit" value="Submit"id="submitbutton">
-    </form>
+        <div class="form">
+            <form id="answerForm" onsubmit="checkAnswer22(); return false;">
+                <input type="text" id="textbox" name="textbox" placeholder="Enter your answer here: " oninput="updateSentence22();"><br>
+                <span id="output" style="font-size: 14px;"></span><br>
+                <input type="submit" value="Submit"id="submitbutton">
+            </form>
+        </div>
+        
+        <div class="timer-container">
+            <div id="timer">Time Left: </div>
+        </div>
 </div>
 
 <!--
@@ -95,7 +100,9 @@
     &nbsp; &nbsp; &nbsp; &nbsp; }<br>
     }<br> 
 </div>
-<div id="sentence23" class="sentence"> <br> The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.  </div>
+    <div id="sentence23" class="sentence"> <br> The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.  </div>
+    <div id="toastContainer" class="toast1"></div>
+    </div>
 </body>
 
 </html>

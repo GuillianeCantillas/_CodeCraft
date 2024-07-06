@@ -23,7 +23,7 @@ async function saveUserData(user, score) {
 
         if (userDocSnap.exists()) {
             const userData = userDocSnap.data();
-            const userName = `${userData.First_Name} ${userData.Initial} ${userData.Initial}`;
+            const userName = `${userData.First_Name} ${userData.Initial} ${userData.Last_Name}`;
             const yearLevel = userData['YearLevel'];
             const course = userData.Course;
 
@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
             function showToast() {
                 var toast = document.getElementById("toast");
                 toast.className = "toast show";
-                rewardnotifAudio.play(); // Play reward notification sound
+                rewardnotif.play(); 
                 setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
             }
 

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Teko:wght@300..700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Jacquard+12+Charted&family=Syncopate:wght@400;700&family=Workbench&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bokor&family=Ewert&family=Jacquard+12+Charted&family=Syncopate:wght@400;700&family=Workbench&display=swap" rel="stylesheet">
@@ -40,36 +40,36 @@
 
     <div class="content">
         <label for="course-select">Select Course:</label>
-        <select id="course-select" class="dropdown" onchange="updateTable('course')">
+        <select id="course-select" class="dropdown" onchange="updateTable()">
             <option value="default">Select...</option>
             <option value="BSCS">BSCS</option>
             <option value="BSIT">BSIT</option>
         </select>
-
+    
         <label for="year-level-select">Select Year-Level:</label>
-        <select id="year-level-select" class="dropdown" onchange="updateTable('year')">
+        <select id="year-level-select" class="dropdown" onchange="updateTable()">
             <option value="default">Select...</option>
             <option value="1st Year">1st Year</option>
             <option value="2nd Year">2nd Year</option>
             <option value="3rd Year">3rd Year</option>
             <option value="4th Year">4th Year</option>
         </select>
-
+    
         <label for="game-select">Select Game:</label>
-        <select id="game-select" class="dropdown" onchange="updateTable('game')">
+        <select id="game-select" class="dropdown" onchange="updateTable()">
             <option value="default">Select...</option>
             <option value="Haunted Algorithms">Haunted Algorithms</option>
             <option value="Codebreaker Detective">Codebreaker Detective</option>
             <option value="Security Cam Coder">Security Cam Coder</option>
             <option value="Arcade Mania">Arcade Mania</option>
         </select>
-
-
+        
         <table id="data-table">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th>Year Level</th>
+                    <th>Course</th>
                     <th>Score</th>
                     <th>Time Taken</th>
                     <th>Attempts</th>

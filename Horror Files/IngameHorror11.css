@@ -96,20 +96,23 @@
   }
   
   .text-box {
-    font-family: "Courier Prime", monospace;
     position: fixed;
-    top: 5px;
-    right: 50px;
-    bottom: 10vw; 
-    width: 30vw;
+    top: 1px;
+    right: 1px;
+    width: 40vw;
+    height: 100vh;
     max-width: 600px;
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-style: normal;
     font-size: 18px;
     color: #fff;
-    background-color: transparent;
-    padding: 10px;
+    background-color: #31363F;
+    padding: 50px;
     text-align: left;
-    overflow-y: auto; 
+    overflow-y: auto; /* vertical scrolling */
     transition: width 0.5s ease-in-out;
+    text-align: left;
   }
   
   .text-box.minimized {
@@ -132,7 +135,8 @@
   }
   
   .form input[type="text"] {
-    width: 25vw;
+    font-family: "Averia Serif Libre", serif;  
+    width: 23vw;
     max-width: 600px;
     height: 5vh;
     padding: 1.5vh;
@@ -140,33 +144,33 @@
     background-color: black;
     border-radius: 3px;
     font-size: 1.1vw;
-    font-family: "Averia Serif Libre", serif;  
     color: white;
     position: fixed;
-    bottom: 4vh;
-    right: 10vh;
+    bottom: 1vh;
+    right: 5vh;
     z-index: 1000; /* stays on top */
     transition: width 0.5s ease-in-out;
   }
   
   .form input[type="submit"] {
+    font-family: "Averia Serif Libre", serif;  
     position: fixed;
-    bottom: 4vh;
-    right: 10vh;
-    width: 9vw;
+    bottom: 1vh;
+    right: 2vw;
+    width: 6vw;
     height: 5vh;
     padding: 1.5vh;
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 1vw;
-    font-family: "Averia Serif Libre", serif;  
     background-color: #D284AC;
     color: white;
     cursor: pointer;
     z-index: 1000; /* stays on top */
     transition: width 0.5s ease-in-out;
   }
+  
   
   .form input[type="submit"]:hover {
     background-color: #F50CA0;
@@ -203,9 +207,9 @@
     opacity: 1;
   }
  
-  #sentence13{
-    color: gray;
-    font-size: 12px;
+  #sentence14{
+    color: #D284AC;
+  font-size: 18px;
   }
   
   .form {
@@ -229,6 +233,7 @@
   }
   
   #score-container p {
+    font-family: "Averia Serif Libre", serif;  
     margin: 0;
   }
   
@@ -387,4 +392,22 @@
     box-shadow: 0 0 30px #D284AC;
 }
   
+.timer-container {
+  text-align: center;
+  background-color: transparent;
+  color: white;
+  font-family: "Averia Serif Libre", serif;  
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -6vh;
+  left: -1vw; 
+}
+
+#timer {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
   

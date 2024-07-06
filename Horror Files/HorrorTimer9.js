@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -16,18 +16,31 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-const user = auth.currentUser;
-    if (user) {
-            try {
-                await setDoc(doc(db, "users", user.uid), {
-                        elapsedTime: elapsedTime
-                            }, { merge: true });
-                            console.log("Elapsed time successfully written!");
-                        } catch (error) {
-                            console.error("Error writing document: ", error);
-                        }
-                    }
+async function saveUserData(user, score) {
+    try {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
 
+        if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
+            const userName = `${userData.First_Name} ${userData.Initial} ${userData.Last_Name}`;
+            const yearLevel = userData['YearLevel'];
+            const course = userData.Course;
+
+            const HauntedAlgorithmsRef = doc(db, "HauntedAlgorithms", user.uid);
+
+            await updateDoc(HauntedAlgorithmsRef, {
+                score8: score, 
+            });
+
+            console.log("Score updated in HauntedAlgorithms for user:", user.uid);
+        } else {
+            console.log("No such document!");
+        }
+    } catch (error) {
+        console.error("Error updating score:", error);
+    }
+}
 document.addEventListener("DOMContentLoaded", function () {   
     document.getElementById("textbox").disabled = true;
     document.getElementById("submitbutton").disabled = true;      
@@ -35,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const button1 = document.querySelector('.button1');
     const button2 = document.querySelector('.button2');
     const button3 = document.querySelector('.button3');
+    const scoreElement = document.getElementById('score');
     const scores = document.getElementById('score-container');
     const hinting = document.getElementById('hintBox');
     let hintIndex = 0;
@@ -135,45 +149,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000);
 
     setTimeout(() => {
+        document.getElementById("sentence51").style.display = "block";
+        document.getElementById("sentence51").classList.add("show");
+    }, 6000);
+
+    setTimeout(() => {
+        document.getElementById("sentence52").style.display = "block";
+        document.getElementById("sentence52").classList.add("show");
+    }, 10000);
+
+    setTimeout(() => {
         document.getElementById("sentence53").style.display = "block";
         document.getElementById("sentence53").classList.add("show");
-    }, 10000);
+    }, 15000);
 
     setTimeout(() => {
         document.getElementById("sentence54").style.display = "block";
         document.getElementById("sentence54").classList.add("show");
         document.getElementById("textbox").disabled = false;
         document.getElementById("submitbutton").disabled = false;
-    }, 15000);
+        startChallenge();
+    }, 20000);
 
-const scoreElement = document.getElementById('score');
-function getScore() {
-  const score = localStorage.getItem("score");
-  return score ? parseInt(score, 10) : 0;
-};
+    window.checkAnswer54 = function () {
+        const userInput = document.getElementById("textbox").value.trim();
+        handleSubmission(userInput);
+        };
 
-function updateScore(newScore) {
-  localStorage.setItem("score", newScore);
-  scoreElement.textContent = newScore;
-};
-
-let score = getScore();
-scoreElement.textContent = score;
-
-let newScore = getScore();
-
-window.checkAnswer54 = function() {
-  var userInput = document.getElementById("textbox").value.trim();
-  var sentence54 = document.getElementById("sentence54");
-  var correctAnswer = "LocalDate";
-  var spanClass = userInput === correctAnswer ? 'correct' : 'incorrect';
+    function handleSubmission(userInput) {
+    let endTime = new Date(); 
+    let timeTakenMilliseconds = endTime - startTime; 
+    let timeTakenInSeconds = Math.floor(timeTakenMilliseconds / 1000);
+    var sentence54 = document.getElementById("sentence54");
+    var correctAnswer = "LocalDate";
+    var spanClass = userInput === correctAnswer ? 'correct' : 'incorrect';
 
         if (userInput === correctAnswer) {
-            newScore = score + 12; 
-            updateScore(newScore);
             sentence54.innerHTML = 
         "<span style='color: #FF7F3E;'>import java.time.LocalDate;</span> <br><br><br>" +
-        
         "<span style='color: #FF7F3E;'>public class</span>  <span style='color: #1679AB;'>wine</span> {<br>" +
         "&nbsp; &nbsp;   <span style='color: #FF7F3E;'>public static void main(String[] args)</span> {<br>" +
         "&nbsp; &nbsp; &nbsp; &nbsp; <span class='" + spanClass + "'>" + userInput + "</span> <span style='color: #1679AB;'>date1040</span> =" + "<span class='" + spanClass + "'> " + userInput + "</span>.<span style='color: #FF7F3E;'>of</span>(<span style='color: #1679AB;'>1040, 1, 1</span>);<br>" +
@@ -183,6 +196,10 @@ window.checkAnswer54 = function() {
         document.getElementById("textbox").disabled = true;
         document.getElementById("submitbutton").disabled = true;
         displayRemainingFrames();
+        showToast();
+        showToast1();
+        let score = Scoring(timeTakenInSeconds);
+        pauseTimer();
             
                     setTimeout(() => {
                         document.getElementById("sentence55").style.display = "block";
@@ -190,8 +207,16 @@ window.checkAnswer54 = function() {
                     }, 2000);
 
                     setTimeout(() => {
-                        window.location.href = 'https://guillianecantillas.github.io/CodeCraft/IngameHorror10.html';
+                        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/IngameHorror10.html';
                     }, 25000);
+
+                    onAuthStateChanged(auth, async (user) => {
+                        if (user) {
+                            await saveUserData(user, score);
+                        } else {
+                            console.log("No user is signed in.");
+                        }
+                    });
             
         } else {
             sentence54.innerHTML =
@@ -205,10 +230,6 @@ window.checkAnswer54 = function() {
         "};";
         };
     };
-
-    console.log("Current Score:", score);
-    console.log("New Score:", newScore);  
-
 
     window.updateSentence54 = function () {
         var userInput = document.getElementById("textbox").value.trim();
@@ -259,9 +280,94 @@ window.checkAnswer54 = function() {
                 hintText.textContent = "No more hints available.";
             }};
 
-    function showToast() {
-    var toast = document.getElementById("toast");
-    toast.className = "toast show";
-    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
+let startTime;
+let timer;
+let countdown;
+const duration = 60 * 60; 
+
+if (localStorage.getItem('countdown')) {
+    countdown = parseInt(localStorage.getItem('countdown'), 10); 
+} else {
+    countdown = duration;
 }
-        });
+
+function startTimer() {
+    clearInterval(timer);
+    updateTimer();
+    timer = setInterval(updateTimer, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(timer);
+}
+
+
+function updateTimer() {
+    let hours = Math.floor(countdown / 3600); 
+    let minutes = Math.floor((countdown % 3600) / 60); 
+    let seconds = countdown % 60; 
+    let displayText = `Time left: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+    document.getElementById('timer').textContent = displayText;
+
+    if (countdown <= 0) {
+        clearInterval(timer);
+        alert('Time is up!');
+        resetTimer(); 
+        return; 
+    }
+
+    countdown--; 
+    localStorage.setItem('countdown', countdown.toString()); 
+}
+
+function resetTimer() {
+    countdown = duration;
+    localStorage.setItem('countdown', countdown.toString()); 
+    startTimer(); 
+}
+
+function startChallenge() {
+    startTime = new Date();
+    startTimer();
+}
+    
+    function Scoring(timeTakenInSeconds) {
+        let baseScore = 11;
+        let bonusPoints = 0;
+
+        if (timeTakenInSeconds <= 30) {
+            bonusPoints = 4;
+            showToast1("4 bonus points");
+        } else if (timeTakenInSeconds <= 60) {
+            bonusPoints = 3;
+            showToast1("3 bonus points");
+        } else if (timeTakenInSeconds <= 120) {
+            bonusPoints = 2;
+            showToast1("2 bonus points");
+        }
+
+        let score = baseScore + bonusPoints;
+        scoreElement.textContent = score;
+        return score;
+    }
+
+    function showToast() {
+        var toast = document.getElementById("toast");
+        toast.className = "toast show";
+        rewardnotif.play(); // Play reward notification sound
+        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
+    }
+
+    function showToast1(message) {
+        const toastContainer = document.getElementById('toastContainer');
+        toastContainer.textContent = message;
+        toastContainer.className = "toast1 show";
+
+        setTimeout(function () {
+            toastContainer.className = toastContainer.className.replace("show", "");
+        }, 5000);
+    }
+
+});
+
+
