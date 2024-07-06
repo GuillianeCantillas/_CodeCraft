@@ -45,7 +45,7 @@ const firebaseConfig = {
               Name: displayName  // Name ni tr sa email
           });
   
-          window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageTeachers.html';
+          window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomePageTeachers.html';
       } catch (error) {
           console.error("Registration error:", error.message);
           alert(error.message);
