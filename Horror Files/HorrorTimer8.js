@@ -156,7 +156,7 @@ function handleSubmission(userInput) {
                     }, 2000);
 
                     setTimeout(() => {
-                        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/IngameHorror9.html';
+                        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/_CodeCraft/Horror%20Files/IngameHorror9.html';
                     }, 12000);
 
                     onAuthStateChanged(auth, async (user) => {

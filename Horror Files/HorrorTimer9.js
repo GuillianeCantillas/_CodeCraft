@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }, 2000);
 
                     setTimeout(() => {
-                        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/IngameHorror10.html';
+                        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/Horror%20Files/IngameHorror10.html';
                     }, 25000);
 
                     onAuthStateChanged(auth, async (user) => {

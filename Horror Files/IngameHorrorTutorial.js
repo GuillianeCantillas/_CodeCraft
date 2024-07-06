@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -16,69 +16,42 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-const updateTable = async () => {
-    const courseSelect = document.getElementById('course-select').value;
-    const yearLevelSelect = document.getElementById('year-level-select').value;
-    const gameSelect = document.getElementById('game-select').value;
-
-    const tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = ''; 
-
-    if (gameSelect === 'default') {
-        return; 
-    }
-
-    try {
-        const gameRef = collection(db, gameSelect);
-        let q = query(gameRef);
-
-        if (courseSelect !== 'default') {
-            q = query(q, where("course", "==", courseSelect));
-        }
-
-        if (yearLevelSelect !== 'default') {
-            q = query(q, where("yearLevel", "==", yearLevelSelect));
-        }
-
-        const querySnapshot = await getDocs(q);
-
-        querySnapshot.forEach((doc) => {
-            const userData = doc.data();
-            const userName = userData.userName;
-            const yearLevel = userData.yearLevel;
-            const course = userData.course;
-            const scores = [
-                userData.score1,
-                userData.score2,
-                userData.score3,
-                userData.score4,
-                userData.score5,
-                userData.score6,
-                userData.score7,
-                userData.score8
-            ];
-
-            let rowHTML = `
-                <tr>
-                    <td>${userName}</td>
-                    <td>${yearLevel}</td>
-                    <td>${course}</td>
-                    <td>${scores.join(', ')}</td>
-                </tr>
-            `;
-
-            tableBody.innerHTML += rowHTML;
-        });
-
-        console.log("Data retrieved and displayed based on filters.");
-    } catch (error) {
-        console.error("Error retrieving documents: ", error);
-    }
-};
-
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
     if (user) {
-        updateTable();
+        try {
+            const userDocRef = doc(db, "users", user.uid);
+            const userDocSnap = await getDoc(userDocRef);
+
+            if (userDocSnap.exists()) {
+                const userData = userDocSnap.data();
+                const userName = userData.First_Name +  " " + userData.Initial + " " + userData.Last_Name;
+                const yearLevel = userData['YearLevel'];
+                const course = userData.Course;
+
+                const hauntedAlgorithmsRef = doc(db, "HauntedAlgorithms", user.uid);
+
+                await setDoc(hauntedAlgorithmsRef, {
+                    userName: userName,
+                    yearLevel: yearLevel,
+                    course: course,
+                    score1: 0, 
+                    score2: 0,
+                    score3: 0,
+                    score4: 0,
+                    score5: 0,
+                    score6: 0,
+                    score7: 0,
+                    score8: 0,
+                    timeTaken: 0  
+                });
+
+                console.log("HauntedAlgorithms document created for user:", user.uid);
+            } else {
+                console.log("No such document!");
+            }
+        } catch (error) {
+            console.error("Error creating document: ", error);
+        }
     } else {
         console.log("User is not logged in.");
     }

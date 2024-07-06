@@ -288,7 +288,7 @@ async function saveUserData(user, score) {
                                         }, 2000);
                     
                                         setTimeout(() => {
-                                            window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/IngameHorror8.html';
+                                            window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/Horror%20Files/IngameHorror8.html';
                                         }, 9000);
 
                                         onAuthStateChanged(auth, async (user) => {
