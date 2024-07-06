@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let timeTakenInSeconds = Math.floor(timeTakenMilliseconds / 1000);
         
         const correctAnswer = "open"; 
+        const dooropenAudio = document.getElementById('dooropen');
         const spanClass = userInput === correctAnswer ? 'correct' : 'incorrect';
         const sentence = document.getElementById("sentence4");
     
@@ -139,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
             &nbsp; &nbsp; &nbsp; <span style='color: #FF7F3E;'> public void </span> <span class='${spanClass}'>${userInput}</span> (<span style='color: #1679AB;'>passcode</span>) <span style='color: #FF7F3E;'> throws </span> IOException <br><br>`;
             document.getElementById("textbox").disabled = true;
             document.getElementById("submitbutton").disabled = true;
+            dooropenAudio.play();
     
             showToast();
             showToast1();
