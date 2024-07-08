@@ -1,3 +1,47 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDBxsbsyx5cs63zi3TY3mrOVBX1hFKpxUg",
+    authDomain: "codecraft-25727.firebaseapp.com",
+    projectId: "codecraft-25727",
+    storageBucket: "codecraft-25727.appspot.com",
+    messagingSenderId: "802309648770",
+    appId: "1:802309648770:web:d02bbc354261ff3174df9b",
+    measurementId: "G-M2NDHT3KQE"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getFirestore(app);
+
+async function saveUserData(user, score) {
+    try {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
+            const userName = `${userData.First_Name} ${userData.Initial} ${userData.Last_Name}`;
+            const yearLevel = userData['YearLevel'];
+            const course = userData.Course;
+
+            const securityCamRef = doc(db, "SecurityCam", user.uid);
+
+            await updateDoc(securityCamRef, {
+                score5: score, 
+            });
+
+            console.log("Score updated in Security Cam for user:", user.uid);
+        } else {
+            console.log("No such document!");
+        }
+    } catch (error) {
+        console.error("Error updating score:", error);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById('pixel-art-container4');
     const container6 = document.getElementById('pixel-art-container6');
@@ -178,10 +222,22 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
                 document.getElementById("sentence4").style.display = "block";
                 document.getElementById("sentence4").classList.add("show");
-            }, 20000);       
+                document.getElementById("textbox").disabled = false;
+                document.getElementById("submitbutton").disabled = false;
+                startChallenge();
+            }, 20000);     
 
-            window.checkAnswer4 = function () {
-        const userInput = document.getElementById("textbox").value.trim().toLowerCase();
+        window.checkAnswer4 = function () {
+                const userInput = document.getElementById("textbox").value.trim().toLowerCase();
+                handleSubmission(userInput);
+                };
+                    
+            
+        function handleSubmission(userInput) {
+            let endTime = new Date(); 
+            let timeTakenMilliseconds = endTime - startTime; 
+            let timeTakenInSeconds = Math.floor(timeTakenMilliseconds / 1000);
+
         const correctAnswer = "[4]";
         const spanClass = userInput === correctAnswer ? 'correct' : 'incorrect';
         const sentence = document.getElementById("sentence4");
@@ -192,7 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("textbox").disabled = true;
             document.getElementById("submitbutton").disabled = true;
 
-            //showToast();
+            showToast1();
+            let score = Scoring(timeTakenInSeconds); 
+            pauseTimer();
 
             setTimeout(() => {
                 document.getElementById("sentence5").style.display = "block";
@@ -202,6 +260,15 @@ document.addEventListener("DOMContentLoaded", function () {
              setTimeout(() => {
                 window.location.href = "https://guillianecantillas.github.io/_CodeCraft/Anomaly/InGameAnomaly6.html";
             }, 9000);
+
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    await saveUserData(user, score);
+                } else {
+                    console.log("No user is signed in.");
+                }
+            });
+
         } else {
             sentence.innerHTML = "<span style='color: #FF7F3E;'>string</span> <span style='color: #1679AB;'>rooms</span> <span class= '" + spanClass + "'>" + userInput + "</span> = {<span style='color: #A2C579;'>&quot;Mac Lab&quot;, &quot;Physics Lab&quot;, &quot;Elevator&quot;, &quot;Classroom&quot;</span>}; <br><br></div>";
             
@@ -253,4 +320,86 @@ var toast = document.getElementById("toast");
 toast.className = "toast show";
 setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
 }*/
+
+let startTime;
+let timer;
+let countdown;
+const duration = 60 * 60; 
+
+if (localStorage.getItem('countdown')) {
+    countdown = parseInt(localStorage.getItem('countdown'), 10); 
+} else {
+    countdown = duration;
+}
+
+function startTimer() {
+    clearInterval(timer);
+    updateTimer();
+    timer = setInterval(updateTimer, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(timer);
+}
+
+function updateTimer() {
+    let hours = Math.floor(countdown / 3600); 
+    let minutes = Math.floor((countdown % 3600) / 60); 
+    let seconds = countdown % 60; 
+    let displayText = `Time left: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+    document.getElementById('timer').textContent = displayText;
+
+    if (countdown <= 0) {
+        clearInterval(timer);
+        alert('Time is up!');
+        resetTimer(); 
+        return; 
+    }
+
+    countdown--; 
+    localStorage.setItem('countdown', countdown.toString()); 
+}
+
+function resetTimer() {
+    countdown = duration;
+    localStorage.setItem('countdown', countdown.toString()); 
+    startTimer(); 
+}
+
+function startChallenge() {
+    startTime = new Date();
+    startTimer();
+}
+    
+    function Scoring(timeTakenInSeconds) {
+        let baseScore = 11;
+        let bonusPoints = 0;
+
+        if (timeTakenInSeconds <= 30) {
+            bonusPoints = 4;
+            showToast1("4 bonus points");
+        } else if (timeTakenInSeconds <= 60) {
+            bonusPoints = 3;
+            showToast1("3 bonus points");
+        } else if (timeTakenInSeconds <= 120) {
+            bonusPoints = 2;
+            showToast1("2 bonus points");
+        }
+
+        let score = baseScore + bonusPoints;
+        scoreElement.textContent = score;
+        return score;
+    }
+
+    function showToast1(message) {
+        const toastContainer = document.getElementById('toastContainer');
+        toastContainer.textContent = message;
+        toastContainer.className = "toast1 show";
+
+        setTimeout(function () {
+            toastContainer.className = toastContainer.className.replace("show", "");
+        }, 5000);
+    }
+
 });
+
