@@ -1,24 +1,46 @@
+ 
+.codebreaker {
+   animation: codebreaker infinite 4.4395345s ease var(--delay);
+   --radius: -12px;
+   --angle: 32.1;
+   --delay: 6s;
+   color: #ffffff00 !important;
+   text-shadow: calc(var(--radius) * sin(calc(var(--angle) + 0)))
+       calc(var(--radius) * cos(calc(var(--angle) + 0))) 0px #000,
+       calc(var(--radius) * sin(calc(var(--angle) + 2.0943951023931953)))
+       calc(var(--radius) * cos(calc(var(--angle) + 2.0943951023931953))) 0px
+       black,
+       calc(var(--radius) * sin(calc(var(--angle) + 4.1887902047863905)))
+       calc(var(--radius) * cos(calc(var(--angle) + 4.1887902047863905))) 0px
+       black;
+}
+
 body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
+  /*background: radial-gradient(circle, rgba(0,0,0,1) 20%, #bb0a1e 80%);*/
+  background: radial-gradient(circle, #ffffff, #111211);
+
+  color: white;
+    font-family: "Baskervville_SC variant0", Tofu;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
     text-align: center;
     margin: 0;
     padding: 0;
   }
   
   .loading-screen {
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
+    color: #ffffff;
+    z-index: 1;
     transition: opacity 1s ease-in-out;
-  }
+    background: transparent;
+}
   
   .loading-content {
     text-align: center;
@@ -26,74 +48,39 @@ body {
     transition: opacity 1s ease-in-out;
   }
   
-  .loading-content h2,
   .loading-content p,
   .loading-content button {
     transition: opacity 1s ease-in-out;
   }
   
-  .loading-content h2 {
-    font-size: 2em;
-  }
   
   .loading-content p {
     font-size: 1.2em;
   }
-  
-  .loading-content button {
-    background-color: #555;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    margin-top: 20px;
-    cursor: pointer;
-    font-size: 16px;
+
+  .loading-content a {
+    font-family: "Baskervville_SC variant0", Tofu, system-ui;
+    font-size: 35px;
+    display: block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    overflow: hidden;
+    text-align: center;
     transition: background-color 0.3s, opacity 1s ease-in-out;
-  }
-  
-  .loading-content button:hover {
-    background-color: #777;
-  }
-  
+}
+
+a:hover{
+  color:#CF2034;
+}
+
   .main-content {
     display: none;
     opacity: 0;
     transition: opacity 1s ease-in-out;
   }
-  
-  h1 {
-    margin-top: 20px;
-  }
-  
-  h2{
-    color: #D284AC;
-  }
-  
-  .glow {
-    text-shadow: 0 0 10px #D284AC(255, 0, 0, 0.8), 0 0 20px #D284AC(255, 0, 0, 0.6), 0 0 30px #D284AC(255, 0, 0, 0.4);
-  }
-  
-  .buttons {
-    margin-top: 30px;
-  }
-  
-  button {
-    background-color: #555;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    margin: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s, opacity 1s ease-in-out;
-    border-radius: 25px;
-  }
-  
-  button:hover {
-    background-color: #777;
-  }
 
-  
   @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -102,41 +89,143 @@ body {
         opacity: 1;
     }
   }
-  
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: opacity 1s ease-in-out;
+
+ 
+  h1 {
+    color: transparent;
+    font-family: "Courier Prime", monospace;  
+    font-weight: 700;
+    text-transform: uppercase;
+
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    font-size: 4em;
+    text-align: center;
   }
-  
-  .modal-content {
-    background-color: #333;
-    color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: white;
-    text-decoration: none;
+  button {
+    font-family: "Courier Prime", monospace; 
+    font-size: 1.2em;
+    background-color: transparent;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
     cursor: pointer;
+    transition: text-shadow 0.3s, transform 0.3s;
+}
+
+button:hover {
+    text-shadow: 0 0 10px grey, 0 0 20px grey, 0 0 30px grey;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+  @keyframes codebreaker {
+    0% { --radius:-20px; --angle:0; }
+    1% { --radius:-19.6px; --angle:0.05235987755982989; }
+    2% { --radius:-19.2px; --angle:0.10471975511965978; }
+    3% { --radius:-18.8px; --angle:0.15707963267948966; }
+    4% { --radius:-18.4px; --angle:0.20943951023931956; }
+    5% { --radius:-18px; --angle:0.26179938779914946; }
+    6% { --radius:-17.6px; --angle:0.3141592653589793; }
+    7% { --radius:-17.2px; --angle:0.3665191429188092; }
+    8% { --radius:-16.8px; --angle:0.4188790204786391; }
+    9% { --radius:-16.4px; --angle:0.471238898038469; }
+    10% { --radius:-16px; --angle:0.5235987755982989; }
+    11% { --radius:-15.6px; --angle:0.5759586531581288; }
+    12% { --radius:-15.2px; --angle:0.6283185307179586; }
+    13% { --radius:-14.8px; --angle:0.6806784082777885; }
+    14% { --radius:-14.4px; --angle:0.7330382858376184; }
+    15% { --radius:-14px; --angle:0.7853981633974483; }
+    16% { --radius:-13.6px; --angle:0.8377580409572782; }
+    17% { --radius:-13.2px; --angle:0.8901179185171081; }
+    18% { --radius:-12.8px; --angle:0.942477796076938; }
+    19% { --radius:-12.4px; --angle:0.9948376736367679; }
+    20% { --radius:-12px; --angle:1.0471975511965979; }
+    21% { --radius:-11.6px; --angle:1.0995574287564276; }
+    22% { --radius:-11.2px; --angle:1.1519173063162575; }
+    23% { --radius:-10.8px; --angle:1.2042771838760875; }
+    24% { --radius:-10.4px; --angle:1.2566370614359172; }
+    25% { --radius:-10px; --angle:1.3089969389957472; }
+    26% { --radius:-9.6px; --angle:1.361356816555577; }
+    27% { --radius:-9.2px; --angle:1.413716694115407; }
+    28% { --radius:-8.8px; --angle:1.4660765716752369; }
+    29% { --radius:-8.4px; --angle:1.5184364492350668; }
+    30% { --radius:-8px; --angle:1.5707963267948966; }
+    31% { --radius:-7.6px; --angle:1.6231562043547265; }
+    32% { --radius:-7.2px; --angle:1.6755160819145565; }
+    33% { --radius:-6.8px; --angle:1.7278759594743862; }
+    34% { --radius:-6.4px; --angle:1.7802358370342162; }
+    35% { --radius:-6px; --angle:1.8325957145940461; }
+    36% { --radius:-5.6px; --angle:1.884955592153876; }
+    37% { --radius:-5.2px; --angle:1.9373154697137058; }
+    38% { --radius:-4.8px; --angle:1.9896753472735358; }
+    39% { --radius:-4.4px; --angle:2.0420352248333655; }
+    40% { --radius:-4px; --angle:2.0943951023931957; }
+    41% { --radius:-3.6px; --angle:2.1467549799530254; }
+    42% { --radius:-3.2px; --angle:2.199114857512855; }
+    43% { --radius:-2.8px; --angle:2.2514747350726854; }
+    44% { --radius:-2.4px; --angle:2.303834612632515; }
+    45% { --radius:-2px; --angle:2.3561944901923453; }
+    46% { --radius:-1.6px; --angle:2.408554367752175; }
+    47% { --radius:-1.2px; --angle:2.4609142453120048; }
+    48% { --radius:-0.8px; --angle:2.5132741228718345; }
+    49% { --radius:-0.4px; --angle:2.5656340004316642; }
+    50% { --radius:0px; --angle:2.6179938779914944; }
+    51% { --radius:0.4px; --angle:2.670353755551324; }
+    52% { --radius:0.8px; --angle:2.722713633111154; }
+    53% { --radius:1.2px; --angle:2.775073510670984; }
+    54% { --radius:1.6px; --angle:2.827433388230814; }
+    55% { --radius:2px; --angle:2.879793265790644; }
+    56% { --radius:2.4px; --angle:2.9321531433504737; }
+    57% { --radius:2.8px; --angle:2.9845130209103035; }
+    58% { --radius:3.2px; --angle:3.0368728984701336; }
+    59% { --radius:3.6px; --angle:3.0892327760299634; }
+    60% { --radius:4px; --angle:3.141592653589793; }
+    61% { --radius:4.4px; --angle:3.1939525311496233; }
+    62% { --radius:4.8px; --angle:3.246312408709453; }
+    63% { --radius:5.2px; --angle:3.2986722862692828; }
+     64% { --radius:5.6px; --angle:3.351032163829113; }
+    65% { --radius:6px; --angle:3.4033920413889427; }
+    66% { --radius:6.4px; --angle:3.4557519189487724; }
+    67% { --radius:6.8px; --angle:3.5081117965086026; }
+    68% { --radius:7.2px; --angle:3.5604716740684323; }
+    69% { --radius:7.6px; --angle:3.6128315516282625; }
+    70% { --radius:8px; --angle:3.6651914291880923; }
+    71% { --radius:8.4px; --angle:3.717551306747922; }
+    72% { --radius:8.8px; --angle:3.769911184307752; }
+    73% { --radius:9.2px; --angle:3.822271061867582; }
+    74% { --radius:9.6px; --angle:3.8746309394274117; }
+    75% { --radius:10px; --angle:3.926990816987242; }
+    76% { --radius:10.4px; --angle:3.9793506945470716; }
+    77% { --radius:10.8px; --angle:4.031710572106902; }
+    78% { --radius:11.2px; --angle:4.084070449666731; }
+    79% { --radius:11.6px; --angle:4.136430327226561; }
+    80% { --radius:12px; --angle:4.188790204786391; }
+    81% { --radius:12.4px; --angle:4.241150082346221; }
+    82% { --radius:12.8px; --angle:4.293509959906051; }
+    83% { --radius:13.2px; --angle:4.345869837465881; }
+    84% { --radius:13.6px; --angle:4.39822971502571; }
+    85% { --radius:14px; --angle:4.4505895925855405; }
+    86% { --radius:14.4px; --angle:4.502949470145371; }
+    87% { --radius:14.8px; --angle:4.555309347705201; }
+    88% { --radius:15.2px; --angle:4.60766922526503; }
+    89% { --radius:15.6px; --angle:4.66002910282486; }
+    90% { --radius:16px; --angle:4.712388980384691; }
+    91% { --radius:16.4px; --angle:4.76474885794452; }
+    92% { --radius:16.8px; --angle:4.81710873550435; }
+    93% { --radius:17.2px; --angle:4.86946861306418; }
+    94% { --radius:17.6px; --angle:4.9218284906240095; }
+    95% { --radius:18px; --angle:4.97418836818384; }
+    96% { --radius:18.4px; --angle:5.026548245743669; }
+    97% { --radius:18.8px; --angle:5.078908123303499; }
+    98% { --radius:19.2px; --angle:5.1312680008633285; }
+    99% { --radius:19.6px; --angle:5.1836278784231595; }
+    100% { --radius:-20px; --angle:0; }
   }
+
   
