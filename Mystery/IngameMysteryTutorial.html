@@ -9,7 +9,7 @@
 <body>
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
-            <h2 class="glow">New to the mechanics of CodeCraft? We have a tutorial here for you!</h2>
+            <h1 class="codebreaker" class="glow">Codebreaker Detective: <br> Python</h1>
             <button class="delayed-button" onclick="continueToTutorial()">Tutorial</button>
             <button class="delayed-button" onclick="continueToGame()">Start the game</button>
             <button class="delayed-button" onclick="continueToMain()">Main Menu</button>
@@ -38,6 +38,15 @@
                 window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html';
             }, 3000);
         }
+        var index=0;
+
+
+            [...document.querySelectorAll("*")].map(i=>{
+            	i.style.setProperty("--delay", "-"+index+"s");
+	            index++;
+});
+
+
     </script>
 </body>
 </html>
