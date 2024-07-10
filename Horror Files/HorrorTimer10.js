@@ -40,35 +40,43 @@ document.addEventListener("DOMContentLoaded", function() {
                 const hauntedAlgorithmsSnap = await getDoc(hauntedAlgorithmsRef);
 
                 if (hauntedAlgorithmsSnap.exists()) {
-                    const scoresData = hauntedAlgorithmsSnap.data();
-                    const totalScore = scoresData.score1 + scoresData.score2 + scoresData.score3 + scoresData.score4 + scoresData.score5 + scoresData.score6 + scoresData.score7 + scoresData.score8;
-                    scoreElement.textContent = totalScore;
-                    displayTextElement.textContent = displayText;
+                    const latestAttemptRef = collection(hauntedAlgorithmsRef, "attempts");
+                    const latestAttemptSnapshot = await getDocs(latestAttemptRef);
 
-                    const attemptsRef = collection(hauntedAlgorithmsRef, "attempts");
-                    await addDoc(attemptsRef, {
-                        score1: scoresData.score1,
-                        score2: scoresData.score2,
-                        score3: scoresData.score3,
-                        score4: scoresData.score4,
-                        score5: scoresData.score5,
-                        score6: scoresData.score6,
-                        score7: scoresData.score7,
-                        score8: scoresData.score8,
-                        timeTaken: timeTaken,
-                        displayText: displayText,
-                        attemptDate: serverTimestamp()
-                    });
+                    if (!latestAttemptSnapshot.empty) {
+                        const latestAttemptDoc = latestAttemptSnapshot.docs[latestAttemptSnapshot.size - 1];
+                        const latestAttemptId = latestAttemptDoc.id;
 
-                    const attemptsSnapshot = await getDocs(attemptsRef);
-                    const attemptsCount = attemptsSnapshot.size;
-                    const lastAttempt = attemptsSnapshot.docs[attemptsCount - 1].data();
-                    const attemptDate = lastAttempt.attemptDate.toDate().toLocaleString();
+                        const scores = [
+                            latestAttemptDoc.data().score1,
+                            latestAttemptDoc.data().score2,
+                            latestAttemptDoc.data().score3,
+                            latestAttemptDoc.data().score4,
+                            latestAttemptDoc.data().score5,
+                            latestAttemptDoc.data().score6,
+                            latestAttemptDoc.data().score7,
+                            latestAttemptDoc.data().score8,
+                        ];
+                        const totalScore = scores.reduce((acc, score) => acc + score, 0);
 
-                    attemptsElement.textContent = attemptsCount;
-                    attemptDateElement.textContent = attemptDate;
+                        const attemptNumber = latestAttemptSnapshot.size;
+                        const attemptDate = latestAttemptDoc.data().updatedAt.toDate();
 
-                    console.log('Time taken, countdown, display text, and attempts saved to Firestore:', timeTaken, countdown, displayText);
+                        await updateDoc(latestAttemptDoc.ref, {
+                            timeTaken: timeTaken,
+                            displayText: `${hours} hours, ${minutes} minutes, and ${seconds} seconds`,
+                        });
+
+                        scoreElement.textContent = totalScore;
+                        displayTextElement.textContent = displayText;
+                        attemptsElement.textContent = attemptNumber;
+                        attemptDateElement.textContent = attemptDate.toLocaleString();
+
+                        console.log('Scores from the latest attempt retrieved and displayed:', totalScore);
+                        console.log('Time taken updated in Firestore for latest attempt:', timeTaken);
+                    } else {
+                        console.log("No attempts found.");
+                    }
                 } else {
                     console.log("No such document!");
                 }

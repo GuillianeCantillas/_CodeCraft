@@ -66,6 +66,8 @@ const updateTable = async () => {
             const attemptsCount = attemptsSnapshot.size;
 
             let attemptsDetails = '';
+            let timedisplay = '';
+            let datedisplay = '';
             attemptsSnapshot.forEach((attemptDoc) => {
                 const attemptData = attemptDoc.data();
                 const scores = [
@@ -80,8 +82,11 @@ const updateTable = async () => {
                 ];
                 const timeTaken = attemptData.timeTaken;
                 const attemptDate = attemptData.updatedAt.toDate().toLocaleString();
+                const display = attemptData.displayText;
                 
-                attemptsDetails += `<br>Attempt ${attemptDoc.id}: ${scores.join(', ')} (Time: ${timeTaken}s, Date: ${attemptDate})`;
+                attemptsDetails += `<br>${scores.join(', ')}`;
+                timedisplay += ` (${display})`;
+                datedisplay += ` (${attemptDate})`
             });
 
             let rowHTML = `
@@ -90,8 +95,9 @@ const updateTable = async () => {
                     <td>${yearLevel}</td>
                     <td>${course}</td>
                     <td>${attemptsDetails}</td>
-                    <td>${time}</td>
+                    <td>${timedisplay}</td>
                     <td>${attemptsCount}</td>
+                    <td>${datedisplay}</td>
                 </tr>
             `;
 
