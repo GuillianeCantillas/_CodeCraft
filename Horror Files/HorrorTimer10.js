@@ -1,15 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID",
-    measurementId: "YOUR_MEASUREMENT_ID"
+    apiKey: "AIzaSyDBxsbsyx5cs63zi3TY3mrOVBX1hFKpxUg",
+    authDomain: "codecraft-25727.firebaseapp.com",
+    projectId: "codecraft-25727",
+    storageBucket: "codecraft-25727.appspot.com",
+    messagingSenderId: "802309648770",
+    appId: "1:802309648770:web:d02bbc354261ff3174df9b",
+    measurementId: "G-M2NDHT3KQE"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -24,6 +24,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const countdownElement = document.getElementById('countdown');
     const displayTextElement = document.getElementById('timer');
 
+    const duration = 60 * 60; // 1 hour in seconds
+    let countdown = localStorage.getItem('countdown') ? parseInt(localStorage.getItem('countdown'), 10) : duration;
+    const timeTaken = duration - countdown;
+
+    let hours = Math.floor(timeTaken / 3600);
+    let minutes = Math.floor((timeTaken % 3600) / 60);
+    let seconds = timeTaken % 60;
+    let  displayText = `Time taken: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             try {
@@ -34,22 +43,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     const scoresData = hauntedAlgorithmsSnap.data();
                     const totalScore = scoresData.score1 + scoresData.score2 + scoresData.score3 + scoresData.score4 + scoresData.score5 + scoresData.score6 + scoresData.score7 + scoresData.score8;
                     scoreElement.textContent = totalScore;
-                    timeTakenElement.textContent = scoresData.timeTaken;
-                    countdownElement.textContent = scoresData.countdown;
-                    displayTextElement.textContent = scoresData.displayText;
+                    displayTextElement.textContent = `Time taken: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`
                 } else {
                     console.log("No such document!");
                 }
 
-                const duration = 60 * 60; // 1 hour in seconds
-                let countdown = localStorage.getItem('countdown') ? parseInt(localStorage.getItem('countdown'), 10) : duration;
-                const timeTaken = duration - countdown;
-
-                let hours = Math.floor(timeTaken / 3600);
-                let minutes = Math.floor((timeTaken % 3600) / 60);
-                let seconds = timeTaken % 60;
-
-                await setDoc(hauntedAlgorithmsRef, {
+                await updateDoc(hauntedAlgorithmsRef, {
                     timeTaken: timeTaken,
                     countdown: countdown,
                     displayText: `Time taken: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`,

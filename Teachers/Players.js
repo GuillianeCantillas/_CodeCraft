@@ -68,8 +68,9 @@ const updateTable = async () => {
                 userData.score5,
                 userData.score6,
                 userData.score7,
-                userData.score8
+                userData.score8,
             ];
+            const time = userData.displayText;
 
             let rowHTML = `
                 <tr>
@@ -77,6 +78,7 @@ const updateTable = async () => {
                     <td>${yearLevel}</td>
                     <td>${course}</td>
                     <td>${scores.join(', ')}</td>
+                    <td>${time}</td>
                 </tr>
             `;
 
