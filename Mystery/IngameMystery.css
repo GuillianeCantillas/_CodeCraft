@@ -24,7 +24,7 @@ body {
   font-size: 25px;
   color: #F50CA0;
   top: 20px;
-  left: 50px;
+  right: 50px;
 }
 
 .homeheader h2 {
@@ -32,7 +32,7 @@ body {
   font-size: 12px;
   color: whitesmoke;
   top: 50px;
-  left: 110px;
+  right: 110px;
 }
 
 .homeheader h3 {
@@ -40,7 +40,7 @@ body {
   font-size: 15px;
   color: #D284AC;
   top: 70px;
-  left: 80px;
+  right: 80px;
 }
 
 #pixel-art-container1, #pixel-art-container2, #pixel-art-container3 {
