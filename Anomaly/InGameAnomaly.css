@@ -452,19 +452,19 @@ body {
 }
 
 #score-container {
-  width: 15%;
-  height: 10%;
+  width: 40%;
+  height: 15%;
   position: absolute;
   background-color: transparent;
   padding: 10px 20px;
   border-radius: 10px;
   color: white;
-  font-family: "Averia Serif Libre", serif;  
   font-size: 18px;
   z-index: 3;
 }
 
 #score-container p {
+  font-family: "Averia Serif Libre", serif;  
   margin: 0;
 }
 

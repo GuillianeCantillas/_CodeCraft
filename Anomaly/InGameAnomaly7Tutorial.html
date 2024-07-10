@@ -79,6 +79,11 @@
             <input type="submit" value="Submit" id="submitbutton">
         </form>
     </div>
+
+    <div class="timer-container">
+        <div id="timer">Time Left: 60 minutes </div>
+    </div>
+
 </div>
     
 <div class="text-box">
@@ -90,10 +95,12 @@
     <div id="sentence8" class="sentence">  <span style="color: #D284AC;">Undo</span> - to erase your answer. <br><br></div>
     <div id="sentence9" class="sentence">  And lastly, the <span style="color: #D284AC;">Hint button</span> which you can go ahead and explore yourself. <br><br></div>
     <div id="sentence10" class="sentence"> On top of the pixel container is your <span style="color: #D284AC;"> score.</span> You may acquire different amount of points per level as the difficulty arises.<br><br></div>
-    <div id="sentence11" class="sentence"> Oh and ofcourse! The way CodeCraft's games verify your answer is by color. <br><br></div>
-    <div id="sentence12" class="sentence"> Your input will change to this color if it is <span style="color: #F50CA0;">correct</span> and turn to this if <span style="color: red;">incorrect</span> <br><br></div>
-    <div id="sentence13" class="sentence"> Further information about the syntax presented in each puzzle will also look like this.<br><br></div>
-    <div id="sentence14" class="sentence"> That's about it! We hope that you have a wonderful time playing! Goodluck! You will be directed to the game in just a few seconds.<br><br></div>
+    <div id="sentence11" class="sentence"> You will also be given an <span style="color: #D284AC;"> hour </span> to answer the game. But when you answer it quickly enough, you might see some bonus points added to your original score. <br>
+        Bonus points occur when you answer the level quickly, it can range from <span style="color: #D284AC;"> +2 to +4 </span> depending on the time taken by you. <br><br>
+    <div id="sentence12" class="sentence"> Oh and ofcourse! The way CodeCraft's games verify your answer is by color. <br><br></div>
+    <div id="sentence13" class="sentence"> Your input will change to this color if it is <span style="color: #F50CA0;">correct</span> and turn to this if <span style="color: red;">incorrect</span> <br><br></div>
+    <div id="sentence14" class="sentence"> Further information about the syntax presented in each level will also look like this.<br><br></div>
+    <div id="sentence15" class="sentence"> That's about it! We hope that you have a wonderful time playing! Goodluck! You will be directed to the game in just a few seconds.<br><br><br></div>
 </div>
 
 
@@ -332,7 +339,13 @@
                     }, 85000); 
 
                 setTimeout(() => {
-                window.location.href = 'https://guillianecantillas.github.io/CodeCraft/InGameAnomaly.html';
+                        document.getElementById("sentence15").style.display = "block";
+                        document.getElementById("sentence15").classList.add("show");
+                        windo
+                    }, 90000); 
+
+                setTimeout(() => {
+                window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/Anomaly/InGameAnomaly.html';
             }, 95000);
 
 
