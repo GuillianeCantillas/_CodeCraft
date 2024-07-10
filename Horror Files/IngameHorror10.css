@@ -61,7 +61,7 @@ body {
 
   #score-container {
     position: absolute;
-    bottom: 44vh;
+    bottom: 34vh;
     width: 100px;
     background-color: transparent;
     margin-top: 10px;
@@ -78,7 +78,7 @@ body {
   
   .buttons{
     position: absolute;
-    bottom: 35vh;
+    bottom: 25vh;
     display: flex;
     flex-direction: row;
     gap: 40px;
@@ -151,9 +151,8 @@ body {
 
 .timer-container {
   position: absolute;
-  bottom: 44vh;
-  width: 200px;
-  left: 10vw;
+  bottom: 45vh;
+  width: 450px;
   background-color: transparent;
   margin-top: 10px;
   border-radius: 10px;
@@ -164,5 +163,22 @@ body {
 }
 
 .timer-container p {
+  margin: 0;
+}
+
+.attempt-container {
+  position: absolute;
+  bottom: 39vh;
+  width: 120px;
+  background-color: transparent;
+  margin-top: 10px;
+  border-radius: 10px;
+  color: white;
+  font-family: "Courier Prime", monospace;
+  font-size: 18px;
+  z-index: 3;
+}
+
+.attempt-container p {
   margin: 0;
 }

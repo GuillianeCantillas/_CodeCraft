@@ -16,7 +16,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {-
     showToast();
 
     const scoreElement = document.getElementById('score');
@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 await updateDoc(hauntedAlgorithmsRef, {
                     timeTaken: timeTaken,
-                    countdown: countdown,
                     displayText: `Time taken: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`,
                     updatedAt: serverTimestamp()
                 }, { merge: true });
