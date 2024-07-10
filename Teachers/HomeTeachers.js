@@ -66,20 +66,20 @@ function updateTable() {
             break;
 
         case "data2":
-            addTableRow("Level 1", "What is CSS?", "CSS stands for Cascading Style Sheets.");
-            addTableRow("Level 2", "What is JavaScript?", "JavaScript is a scripting language.");
-            addTableRow("Level 3", "What is JavaScript?", "JavaScript is a scripting language.");
-            addTableRow("Level 4", "What is JavaScript?", "JavaScript is a scripting language.");
-            addTableRow("Level 5", "What is JavaScript?", "JavaScript is a scripting language.");
+            addTableRow("Level 1", "");
+            addTableRow("Level 2", "");
+            addTableRow("Level 3", "");
+            addTableRow("Level 4", "");
+            addTableRow("Level 5", "");
 
             break;
         case "data3":
-            addTableRow("Level 1", "What is Python?", "Python is an interpreted high-level programming language.");
-            addTableRow("Level 2", "What is PHP?", "PHP is a server-side scripting language.");
+            addTableRow("Level 1", "");
+            addTableRow("Level 2", "");
             break;
         case "data4":
-            addTableRow("Level 1", "What is SQL?", "SQL stands for Structured Query Language.");
-            addTableRow("Level 2", "What is C++?", "C++ is a general-purpose programming language.");
+            addTableRow("Level 1", "");
+            addTableRow("Level 2", "");
             break;
         default:
             // Show default message or handle empty state

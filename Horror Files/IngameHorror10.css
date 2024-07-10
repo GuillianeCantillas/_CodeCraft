@@ -149,4 +149,20 @@ body {
   to {top: 0; opacity: 0;}
 }
 
+.timer-container {
+  position: absolute;
+  bottom: 44vh;
+  width: 200px;
+  left: 10vw;
+  background-color: transparent;
+  margin-top: 10px;
+  border-radius: 10px;
+  color: white;
+  font-family: "Courier Prime", monospace;
+  font-size: 18px;
+  z-index: 3;
+}
 
+.timer-container p {
+  margin: 0;
+}
