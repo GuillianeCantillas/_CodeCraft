@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, collection, updateDoc, Timestamp, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -27,20 +27,33 @@ async function saveUserData(user, score) {
             const yearLevel = userData['YearLevel'];
             const course = userData.Course;
 
-            const HauntedAlgorithmsRef = doc(db, "HauntedAlgorithms", user.uid);
+            const hauntedAlgorithmsRef = doc(db, "HauntedAlgorithms", user.uid);
+            const attemptsRef = collection(hauntedAlgorithmsRef, "attempts");
 
-            await updateDoc(HauntedAlgorithmsRef, {
-                score2: score, 
-            });
+            const q = query(attemptsRef, orderBy("updatedAt", "desc"), limit(1));
+            const querySnapshot = await getDocs(q);
 
-            console.log("Score updated in HauntedAlgorithms for user:", user.uid);
+            if (!querySnapshot.empty) {
+                const latestAttemptDoc = querySnapshot.docs[0];
+                const latestAttemptRef = doc(db, latestAttemptDoc.ref.path);
+
+                await updateDoc(latestAttemptRef, {
+                    score2: score,
+                    updatedAt: Timestamp.now()
+                });
+
+                console.log(`Score2 updated in latest attempt for user: ${user.uid}`);
+            } else {
+                console.log("No attempts found for user.");
+            }
         } else {
-            console.log("No such document!");
+            console.log("User document does not exist.");
         }
     } catch (error) {
-        console.error("Error updating score:", error);
+        console.error("Error updating attempt: ", error);
     }
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("textbox").disabled = true;
@@ -143,55 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let score = Scoring(timeTakenInSeconds);
             pauseTimer();
 
-                    
-                        function updateButtonPositions() {
-                            const containerRect = container.getBoundingClientRect();
-                            
-                            button1.style.left = `${containerRect.left + -60}px`;
-                            button1.style.top = `${containerRect.top + 310}px`; //Reset
-            
-                            button2.style.left = `${containerRect.left + 20}px`;
-                            button2.style.top = `${containerRect.top + 310}px`; //Undo
-            
-                            button3.style.left = `${containerRect.left + 760}px`;
-                            button3.style.top = `${containerRect.top + 310}px`; // Hint
-            
-                            scores.style.left = `${containerRect.left + 740}px`;
-                            scores.style.top = `${containerRect.top + -255}px`; // Score Board
-            
-                            hinting.style.left = `${containerRect.left + 710}px`;
-                            hinting.style.top = `${containerRect.top + 340}px`; // Hints na talaguh
-                        }
-            
-                        updateButtonPositions();
-                        window.addEventListener('resize', updateButtonPositions);
-                        window.addEventListener('scroll', updateButtonPositions);
-            
-            let currentFrameIndex = 0;
-            let interval = 1000;
-            const frames2 = container.querySelectorAll(".pixel-art-frame");
-            let animationInterval;
-        
-            function showNextFrame(frames) {
-                frames[currentFrameIndex].classList.remove("active");
-                currentFrameIndex = (currentFrameIndex + 1) % frames.length;
-                frames[currentFrameIndex].classList.add("active");
-
-                if (frames[currentFrameIndex].id === 'img16') {
-                    chestopenAudio.play();
-                }
-                // Last Frame
-                if (frames[currentFrameIndex].id === 'img19') {
-                    clearInterval(animationInterval);
-                }
-            }
-        
-            function startAnimation(frames) {
-                currentFrameIndex = 0; // Reset index
-                frames[currentFrameIndex].classList.add("active");
-                animationInterval = setInterval(() => showNextFrame(frames), interval);
-            }
-        
             setTimeout(() => {
                 document.getElementById("sentence9").style.display = "block";
                 document.getElementById("sentence9").classList.add("show");

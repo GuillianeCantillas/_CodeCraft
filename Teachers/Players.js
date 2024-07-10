@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -11,7 +11,6 @@ const firebaseConfig = {
     appId: "1:802309648770:web:d02bbc354261ff3174df9b",
     measurementId: "G-M2NDHT3KQE"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
@@ -79,7 +78,10 @@ const updateTable = async () => {
                     attemptData.score7,
                     attemptData.score8,
                 ];
-                attemptsDetails += `<br>Attempt ${attemptDoc.id}: ${scores.join(', ')} (Time: ${attemptData.timeTaken}s)`;
+                const timeTaken = attemptData.timeTaken;
+                const attemptDate = attemptData.updatedAt.toDate().toLocaleString();
+                
+                attemptsDetails += `<br>Attempt ${attemptDoc.id}: ${scores.join(', ')} (Time: ${timeTaken}s, Date: ${attemptDate})`;
             });
 
             let rowHTML = `

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, collection, getDocs, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, collection, updateDoc, Timestamp, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -16,56 +16,44 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        try {
-            const userDocRef = doc(db, "users", user.uid);
-            const userDocSnap = await getDoc(userDocRef);
+async function saveUserData(user, score) {
+    try {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
 
-            if (userDocSnap.exists()) {
-                const userData = userDocSnap.data();
-                const userName = userData.First_Name +  " " + userData.Initial + " " + userData.Last_Name;
-                const yearLevel = userData['YearLevel'];
-                const course = userData.Course;
+        if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
+            const userName = `${userData.First_Name} ${userData.Initial} ${userData.Last_Name}`;
+            const yearLevel = userData['YearLevel'];
+            const course = userData.Course;
 
-                const hauntedAlgorithmsRef = doc(db, "HauntedAlgorithms", user.uid);
-                await setDoc(hauntedAlgorithmsRef, {
-                    userName: userName,
-                    yearLevel: yearLevel,
-                    course: course,
-                }, { merge: true });
+            const hauntedAlgorithmsRef = doc(db, "HauntedAlgorithms", user.uid);
+            const attemptsRef = collection(hauntedAlgorithmsRef, "attempts");
 
-                const attemptsRef = collection(hauntedAlgorithmsRef, "attempts");
-                const attemptsSnap = await getDocs(attemptsRef);
-                const attemptsCount = attemptsSnap.size;
+            const q = query(attemptsRef, orderBy("updatedAt", "desc"), limit(1));
+            const querySnapshot = await getDocs(q);
 
-                const newAttemptId = (attemptsCount + 1).toString();
-                const newAttemptRef = doc(attemptsRef, newAttemptId);
-                await setDoc(newAttemptRef, {
-                    score1: 0, 
-                    score2: 0,
-                    score3: 0,
-                    score4: 0,
-                    score5: 0,
-                    score6: 0,
-                    score7: 0,
-                    score8: 0,
-                    timeTaken: 0,
-                    displayText: 0,
+            if (!querySnapshot.empty) {
+                const latestAttemptDoc = querySnapshot.docs[0];
+                const latestAttemptRef = doc(db, latestAttemptDoc.ref.path);
+
+                await updateDoc(latestAttemptRef, {
+                    score1: score,
                     updatedAt: Timestamp.now()
                 });
 
-                console.log(`New attempt ${newAttemptId} added for user: ${user.uid}`);
+                console.log(`Score1 updated in latest attempt for user: ${user.uid}`);
             } else {
-                console.log("No such document!");
+                console.log("No attempts found for user.");
             }
-        } catch (error) {
-            console.error("Error adding attempt: ", error);
+        } else {
+            console.log("User document does not exist.");
         }
-    } else {
-        console.log("User is not logged in.");
+    } catch (error) {
+        console.error("Error updating attempt: ", error);
     }
-});
+}
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById('pixel-art-container1');
@@ -181,7 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = "https://guillianecantillas.github.io/_CodeCraft/Horror%20Files/IngameHorror2.html";
             }, 9000);
 
-        
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
                     await saveUserData(user, score);
