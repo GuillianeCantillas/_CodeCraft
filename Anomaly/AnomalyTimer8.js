@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, updateDoc, serverTimestamp, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -15,36 +15,85 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
+
 document.addEventListener("DOMContentLoaded", function() {
     showToast();
 
     const scoreElement = document.getElementById('score');
+    const displayTextElement = document.getElementById('displayText');
+    const attemptsElement = document.getElementById('attempts');
+    const attemptDateElement = document.getElementById('attempt-date');
+
+    const duration = 60 * 60; // 1 hour in seconds
+    let countdown = localStorage.getItem('countdown') ? parseInt(localStorage.getItem('countdown'), 10) : duration;
+    const timeTaken = duration - countdown;
+
+    let hours = Math.floor(timeTaken / 3600);
+    let minutes = Math.floor((timeTaken % 3600) / 60);
+    let seconds = timeTaken % 60;
+    let displayText = `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
 
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             try {
-                const securityCamRef = doc(db, "SecurityCam", user.uid);
-                const securityCamSnap = await getDoc(securityCamRef);
+                const SecurityCamRef = doc(db, "SecurityCam", user.uid);
+                const SecurityCamSnap = await getDoc(SecurityCamRef);
 
-                if (securityCamSnap.exists()) {
-                    const scoresData = securityCamSnap.data();
-                    const totalScore = scoresData.score1 + scoresData.score2 + scoresData.score3 + scoresData.score4 + scoresData.score5 + scoresData.score6;
-                    scoreElement.textContent = totalScore;
+                if (SecurityCamSnap.exists()) {
+                    const latestAttemptRef = collection(SecurityCamRef, "attempts");
+                    const latestAttemptSnapshot = await getDocs(latestAttemptRef);
+
+                    if (!latestAttemptSnapshot.empty) {
+                        const latestAttemptDoc = latestAttemptSnapshot.docs[latestAttemptSnapshot.size - 1];
+                        const latestAttemptId = latestAttemptDoc.id;
+
+                        const scores = [
+                            latestAttemptDoc.data().score1,
+                            latestAttemptDoc.data().score2,
+                            latestAttemptDoc.data().score3,
+                            latestAttemptDoc.data().score4,
+                            latestAttemptDoc.data().score5,
+                            latestAttemptDoc.data().score6,
+                            latestAttemptDoc.data().score7,
+                            latestAttemptDoc.data().score8,
+                        ];
+                        const totalScore = scores.reduce((acc, score) => acc + score, 0);
+
+                        const attemptNumber = latestAttemptSnapshot.size;
+                        const attemptDate = latestAttemptDoc.data().updatedAt.toDate();
+
+                        await updateDoc(latestAttemptDoc.ref, {
+                            timeTaken: timeTaken,
+                            displayText: `${hours} hours, ${minutes} minutes, and ${seconds} seconds`,
+                        });
+
+                        scoreElement.textContent = totalScore;
+                        displayTextElement.textContent = displayText;
+                        attemptsElement.textContent = attemptNumber;
+                        attemptDateElement.textContent = attemptDate.toLocaleString();
+
+                        console.log('Scores from the latest attempt retrieved and displayed:', totalScore);
+                        console.log('Time taken updated in Firestore for latest attempt:', timeTaken);
+                    } else {
+                        console.log("No attempts found.");
+                    }
                 } else {
                     console.log("No such document!");
                 }
             } catch (error) {
-                console.error("Error retrieving user data:", error);
+                console.error("Error retrieving user data or saving values:", error);
             }
         } else {
             console.log("No user is signed in.");
         }
     });
 
-function showToast() {
-    var toast = document.getElementById("toast");
-    toast.className = "toast show";
-    setTimeout(function() { toast.className = toast.className.replace("show", ""); }, 3000);
-}
-
+    function showToast() {
+        var toast = document.getElementById("toast");
+        if (toast) {
+            toast.className = "toast show";
+            setTimeout(function() { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    }
 });
+

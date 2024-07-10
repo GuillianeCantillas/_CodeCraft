@@ -11,7 +11,6 @@ const firebaseConfig = {
     appId: "1:802309648770:web:d02bbc354261ff3174df9b",
     measurementId: "G-M2NDHT3KQE"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
@@ -22,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const scoreElement = document.getElementById('score');
     const displayTextElement = document.getElementById('displayText');
     const attemptsElement = document.getElementById('attempts');
-    const attemptDateElement = document.getElementById('attempt-date');
 
     const duration = 60 * 60; // 1 hour in seconds
     let countdown = localStorage.getItem('countdown') ? parseInt(localStorage.getItem('countdown'), 10) : duration;
@@ -70,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         scoreElement.textContent = totalScore;
                         displayTextElement.textContent = displayText;
                         attemptsElement.textContent = attemptNumber;
-                        attemptDateElement.textContent = attemptDate.toLocaleString();
 
                         console.log('Scores from the latest attempt retrieved and displayed:', totalScore);
                         console.log('Time taken updated in Firestore for latest attempt:', timeTaken);
@@ -107,4 +104,5 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() { toast.className = toast.className.replace("show", ""); }, 3000);
         }
     }
+
 });

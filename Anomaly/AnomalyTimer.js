@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, collection, updateDoc, Timestamp, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -27,21 +27,32 @@ async function saveUserData(user, score) {
             const yearLevel = userData['YearLevel'];
             const course = userData.Course;
 
-            const securityCamRef = doc(db, "SecurityCam", user.uid);
+            const SecurityCamRef = doc(db, "SecurityCam", user.uid);
+            const attemptsRef = collection(SecurityCamRef, "attempts");
 
-            await updateDoc(securityCamRef, {
-                score1: score, 
-            });
+            const q = query(attemptsRef, orderBy("updatedAt", "desc"), limit(1));
+            const querySnapshot = await getDocs(q);
 
-            console.log("Score updated in Security Cam for user:", user.uid);
+            if (!querySnapshot.empty) {
+                const latestAttemptDoc = querySnapshot.docs[0];
+                const latestAttemptRef = doc(db, latestAttemptDoc.ref.path);
+
+                await updateDoc(latestAttemptRef, {
+                    score1: score,
+                    updatedAt: Timestamp.now()
+                });
+
+                console.log(`Score1 updated in latest attempt for user: ${user.uid}`);
+            } else {
+                console.log("No attempts found for user.");
+            }
         } else {
-            console.log("No such document!");
+            console.log("User document does not exist.");
         }
     } catch (error) {
-        console.error("Error updating score:", error);
+        console.error("Error updating attempt: ", error);
     }
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById('pixel-art-container4');

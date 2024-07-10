@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  
+import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDBxsbsyx5cs63zi3TY3mrOVBX1hFKpxUg",
     authDomain: "codecraft-25727.firebaseapp.com",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore();
 
 const email = document.getElementById('emailAddress');
 const password = document.getElementById('password');
@@ -28,10 +30,18 @@ loginButton.addEventListener("click", async function() {
             return;
         }
 
-        const userCredential = await signInWithEmailAndPassword(auth, emailValue, passwordValue);
-        const user = userCredential.user;
+        const teachersRef = collection(db, "teachers");
+        const querySnapshot = await getDocs(query(teachersRef, where("Email", "==", emailValue)));
 
-        window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html';
+        if (!querySnapshot.empty) {
+            const userCredential = await signInWithEmailAndPassword(auth, emailValue, passwordValue);
+            const user = userCredential.user;
+            window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomePageTeachers.html';
+        } else {
+            const userCredential = await signInWithEmailAndPassword(auth, emailValue, passwordValue);
+            const user = userCredential.user;
+            window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomePageActual.html';
+        }
     } catch (error) {
         console.error("Login error:", error.message);
         alert(error.message);
