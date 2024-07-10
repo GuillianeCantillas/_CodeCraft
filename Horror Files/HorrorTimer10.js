@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, updateDoc, serverTimestamp, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -16,13 +16,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-document.addEventListener("DOMContentLoaded", function() {-
+document.addEventListener("DOMContentLoaded", function() {
     showToast();
 
     const scoreElement = document.getElementById('score');
-    const timeTakenElement = document.getElementById('time-taken');
-    const countdownElement = document.getElementById('countdown');
-    const displayTextElement = document.getElementById('timer');
+    const displayTextElement = document.getElementById('displayText');
+    const attemptsElement = document.getElementById('attempts');
+    const attemptDateElement = document.getElementById('attempt-date');
 
     const duration = 60 * 60; // 1 hour in seconds
     let countdown = localStorage.getItem('countdown') ? parseInt(localStorage.getItem('countdown'), 10) : duration;
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {-
     let hours = Math.floor(timeTaken / 3600);
     let minutes = Math.floor((timeTaken % 3600) / 60);
     let seconds = timeTaken % 60;
-    let  displayText = `Time taken: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+    let displayText = `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
 
     onAuthStateChanged(auth, async (user) => {
         if (user) {
@@ -43,19 +43,35 @@ document.addEventListener("DOMContentLoaded", function() {-
                     const scoresData = hauntedAlgorithmsSnap.data();
                     const totalScore = scoresData.score1 + scoresData.score2 + scoresData.score3 + scoresData.score4 + scoresData.score5 + scoresData.score6 + scoresData.score7 + scoresData.score8;
                     scoreElement.textContent = totalScore;
-                    displayTextElement.textContent = `Time taken: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`
+                    displayTextElement.textContent = displayText;
+
+                    const attemptsRef = collection(hauntedAlgorithmsRef, "attempts");
+                    await addDoc(attemptsRef, {
+                        score1: scoresData.score1,
+                        score2: scoresData.score2,
+                        score3: scoresData.score3,
+                        score4: scoresData.score4,
+                        score5: scoresData.score5,
+                        score6: scoresData.score6,
+                        score7: scoresData.score7,
+                        score8: scoresData.score8,
+                        timeTaken: timeTaken,
+                        displayText: displayText,
+                        attemptDate: serverTimestamp()
+                    });
+
+                    const attemptsSnapshot = await getDocs(attemptsRef);
+                    const attemptsCount = attemptsSnapshot.size;
+                    const lastAttempt = attemptsSnapshot.docs[attemptsCount - 1].data();
+                    const attemptDate = lastAttempt.attemptDate.toDate().toLocaleString();
+
+                    attemptsElement.textContent = attemptsCount;
+                    attemptDateElement.textContent = attemptDate;
+
+                    console.log('Time taken, countdown, display text, and attempts saved to Firestore:', timeTaken, countdown, displayText);
                 } else {
                     console.log("No such document!");
                 }
-
-                await updateDoc(hauntedAlgorithmsRef, {
-                    timeTaken: timeTaken,
-                    displayText: `Time taken: ${hours} hours, ${minutes} minutes, and ${seconds} seconds`,
-                    updatedAt: serverTimestamp()
-                }, { merge: true });
-
-                console.log('Time taken, countdown, display text saved to Firestore:', timeTaken, countdown, displayText);
-
             } catch (error) {
                 console.error("Error retrieving user data or saving values:", error);
             }

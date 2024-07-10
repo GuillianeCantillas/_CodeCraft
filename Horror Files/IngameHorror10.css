@@ -60,9 +60,6 @@ body {
   }
 
   #score-container {
-    position: absolute;
-    bottom: 34vh;
-    width: 100px;
     background-color: transparent;
     margin-top: 10px;
     border-radius: 10px;
@@ -77,8 +74,9 @@ body {
   }
   
   .buttons{
+    font-family: "Averia Serif Libre", serif; 
     position: absolute;
-    bottom: 25vh;
+    bottom: 23vh;
     display: flex;
     flex-direction: row;
     gap: 40px;
@@ -150,9 +148,6 @@ body {
 }
 
 .timer-container {
-  position: absolute;
-  bottom: 45vh;
-  width: 450px;
   background-color: transparent;
   margin-top: 10px;
   border-radius: 10px;
@@ -167,9 +162,6 @@ body {
 }
 
 .attempt-container {
-  position: absolute;
-  bottom: 39vh;
-  width: 120px;
   background-color: transparent;
   margin-top: 10px;
   border-radius: 10px;
@@ -181,4 +173,15 @@ body {
 
 .attempt-container p {
   margin: 0;
+}
+
+.textbox{
+  border: white solid;
+  border-radius: 10px;
+  width: 40vw;
+  height: 25vh;
+  position: absolute;
+  bottom: 20vh;
+  padding: 10px;
+  text-align: center;
 }

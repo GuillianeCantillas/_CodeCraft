@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, query, where, getDocs, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -55,35 +55,46 @@ const updateTable = async () => {
 
         const querySnapshot = await getDocs(q);
 
-        querySnapshot.forEach((doc) => {
-            const userData = doc.data();
+        for (const userDoc of querySnapshot.docs) {
+            const userData = userDoc.data();
             const userName = userData.userName;
             const yearLevel = userData.yearLevel;
             const course = userData.course;
-            const scores = [
-                userData.score1,
-                userData.score2,
-                userData.score3,
-                userData.score4,
-                userData.score5,
-                userData.score6,
-                userData.score7,
-                userData.score8,
-            ];
             const time = userData.displayText;
+
+            const attemptsRef = collection(userDoc.ref, "attempts");
+            const attemptsSnapshot = await getDocs(attemptsRef);
+            const attemptsCount = attemptsSnapshot.size;
+
+            let attemptsDetails = '';
+            attemptsSnapshot.forEach((attemptDoc) => {
+                const attemptData = attemptDoc.data();
+                const scores = [
+                    attemptData.score1,
+                    attemptData.score2,
+                    attemptData.score3,
+                    attemptData.score4,
+                    attemptData.score5,
+                    attemptData.score6,
+                    attemptData.score7,
+                    attemptData.score8,
+                ];
+                attemptsDetails += `<br>Attempt ${attemptDoc.id}: ${scores.join(', ')} (Time: ${attemptData.timeTaken}s)`;
+            });
 
             let rowHTML = `
                 <tr>
                     <td>${userName}</td>
                     <td>${yearLevel}</td>
                     <td>${course}</td>
-                    <td>${scores.join(', ')}</td>
+                    <td>${attemptsDetails}</td>
                     <td>${time}</td>
+                    <td>${attemptsCount}</td>
                 </tr>
             `;
 
             tableBody.innerHTML += rowHTML;
-        });
+        }
 
         console.log("Data retrieved and displayed based on filters.");
     } catch (error) {

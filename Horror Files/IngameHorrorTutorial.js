@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, collection, getDocs, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -29,11 +29,19 @@ onAuthStateChanged(auth, async (user) => {
                 const course = userData.Course;
 
                 const hauntedAlgorithmsRef = doc(db, "HauntedAlgorithms", user.uid);
-
                 await setDoc(hauntedAlgorithmsRef, {
                     userName: userName,
                     yearLevel: yearLevel,
                     course: course,
+                }, { merge: true });
+
+                const attemptsRef = collection(hauntedAlgorithmsRef, "attempts");
+                const attemptsSnap = await getDocs(attemptsRef);
+                const attemptsCount = attemptsSnap.size;
+
+                const newAttemptId = (attemptsCount + 1).toString();
+                const newAttemptRef = doc(attemptsRef, newAttemptId);
+                await setDoc(newAttemptRef, {
                     score1: 0, 
                     score2: 0,
                     score3: 0,
@@ -42,15 +50,17 @@ onAuthStateChanged(auth, async (user) => {
                     score6: 0,
                     score7: 0,
                     score8: 0,
-                    timeTaken: 0  
+                    timeTaken: 0,
+                    displayText: 0,
+                    updatedAt: Timestamp.now()
                 });
 
-                console.log("HauntedAlgorithms document created for user:", user.uid);
+                console.log(`New attempt ${newAttemptId} added for user: ${user.uid}`);
             } else {
                 console.log("No such document!");
             }
         } catch (error) {
-            console.error("Error creating document: ", error);
+            console.error("Error adding attempt: ", error);
         }
     } else {
         console.log("User is not logged in.");
