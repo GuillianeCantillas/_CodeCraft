@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, doc, setDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, doc, setDoc, getDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDBxsbsyx5cs63zi3TY3mrOVBX1hFKpxUg",
@@ -60,7 +60,7 @@ const questionsData = [
     correctAnswer: "ClassName objectName = new ClassName();",
 },
 {
-    question: "hich keyword is used to inherit a class in Java?",
+    question: "Which keyword is used to inherit a class in Java?",
     choices: [
         "implements",
         "inherits",
@@ -80,7 +80,7 @@ const questionsData = [
     correctAnswer: "0",
 },
 {
-    question: "hich of the following statements is used to handle exceptions in Java?",
+    question: "Which of the following statements is used to handle exceptions in Java?",
     choices: [
         "try-catch",
         "if-else",
@@ -183,14 +183,14 @@ const questionsData = [
 
 setDoc(cppDocRef, { questions: questionsData }, { merge: true })
     .then(() => {
-        console.log("Questions added to the C++ document!");
+        console.log("Questions added to the Java document!");
     })
     .catch((error) => {
         console.error("Error adding questions: ", error);
     });
 
     async function fetchQuestions() {
-        const cppDocRef = doc(collection(db, "Questions"), "C++");
+        const cppDocRef = doc(collection(db, "Questions"), "Java");
         const docSnapshot = await getDoc(cppDocRef);
         if (docSnapshot.exists()) {
             return docSnapshot.data().questions;
