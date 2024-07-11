@@ -84,9 +84,9 @@ const questionsData = [
     correctAnswer: "def",
 },
 {
-    question7: "What will be the output of the following code?"+
-    "for i in range(3):"+
-        "print(I)",
+    question: "What will be the output of the following code?<br>"+
+    "for i in range(3): <br>"+
+        "print(I)<,br>",
     choices: [
         "0 1 2 3 ",
         "0 1 2",
