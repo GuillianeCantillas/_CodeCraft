@@ -84,15 +84,16 @@ const questionsData = [
     correctAnswer: "def",
 },
 {
-    question7: "What is the output of the following code?"+
-    "print(type([]))",
+    question7: "What will be the output of the following code?"+
+    "for i in range(3):"+
+        "print(I)",
     choices: [
-        "<class 'list'>",
-        "<class 'dict'>",
-        "<class 'tuple'>",
-        "<class 'set'>"
+        "0 1 2 3",
+        "0 1 2",
+        "1 2 3",
+        "Error"
     ],
-    correctAnswer: "<class 'list'>",
+    correctAnswer: "0 1 2",
 },
 {
     question8: "How can you insert a new item into a list at a specific position?",
