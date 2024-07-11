@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Russo+One&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +33,209 @@
     <button class="buttonA" onclick="window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageUser.html';">
       <img src="Accounts.png" id="user-image"></button>
     <div class="flowing-line"></div>
+    
+    <button id="openForm">Rate This Website</button>
+    <div id="formPopup" class="form-popup">
+        <div class="form-container">
+            <h2>Rate This Website</h2>
+            <form action="/submit_rating" method="post">
+                <label for="rating">Rating:</label>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="5 stars">★</label>
+                    <input type="radio" id="star4" name="rating" value="4" required><label for="star4" title="4 stars">★</label>
+                    <input type="radio" id="star3" name="rating" value="3" required><label for="star3" title="3 stars">★</label>
+                    <input type="radio" id="star2" name="rating" value="2" required><label for="star2" title="2 stars">★</label>
+                    <input type="radio" id="star1" name="rating" value="1" required><label for="star1" title="1 star">★</label>
+                </div>
+
+                <h4>Did CodeCraft improve your programming knowledge?</h4>
+                <label>
+                    <input type="radio" name="improve" value="yes" required> Yes
+                </label>
+                <label>
+                    <input type="radio" name="improve" value="no" required> No
+                </label>
+
+                <label for="comments">Any Suggestions?</label>
+                <textarea id="comments" name="comments" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+                <button type="button" id="closeForm" class="btn cancel">Close</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('openForm').addEventListener('click', function() {
+            document.getElementById('formPopup').style.display = 'block';
+        });
+
+        document.getElementById('closeForm').addEventListener('click', function() {
+            document.getElementById('formPopup').style.display = 'none';
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #openForm {
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        #openForm:hover {
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .form-popup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            right: 0;
+            border: 3px solid #f1f1f1;
+            background-color: rgba(0,0,0,0.7); 
+            z-index: 9;
+            width: 300px;
+        }
+
+        .form-container {
+            max-width: 300px;
+            padding: 20px;
+            background-color: rgb(45, 43, 43);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgb(45, 43, 43);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        h4{
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            text-align: left;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 1.5em;
+            color: #ccc;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+
+        .rating input:checked ~ label {
+            color: #F50CA0;
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #F50CA0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        .btn.cancel {
+            background-color: #820404;
+        }
+
+        .btn.cancel:hover {
+            background-color: #820404;
+        }
+    </style>
+
   </header>
 
   <h2> How's the experience? </h2>
+
+<body>
+    <button id="openForm">Rate This Website</button>
+    <div id="formPopup" class="form-popup">
+        <div class="form-container">
+            <h2>Rate This Website</h2>
+            <form action="/submit_rating" method="post">
+                <label for="rating">Rating:</label>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="5 stars">★</label>
+                    <input type="radio" id="star4" name="rating" value="4" required><label for="star4" title="4 stars">★</label>
+                    <input type="radio" id="star3" name="rating" value="3" required><label for="star3" title="3 stars">★</label>
+                    <input type="radio" id="star2" name="rating" value="2" required><label for="star2" title="2 stars">★</label>
+                    <input type="radio" id="star1" name="rating" value="1" required><label for="star1" title="1 star">★</label>
+                </div>
+
+                <h4>Did CodeCraft improve your programming knowledge?</h4>
+                <label>
+                    <input type="radio" name="improve" value="yes" required> Yes
+                </label>
+                <label>
+                    <input type="radio" name="improve" value="no" required> No
+                </label>
+
+                <label for="comments">Any Suggestions?</label>
+                <textarea id="comments" name="comments" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+                <button type="button" id="closeForm" class="btn cancel">Close</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('openForm').addEventListener('click', function() {
+            document.getElementById('formPopup').style.display = 'block';
+        });
+
+        document.getElementById('closeForm').addEventListener('click', function() {
+            document.getElementById('formPopup').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

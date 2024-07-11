@@ -40,7 +40,7 @@ loginButton.addEventListener("click", async function() {
         } else {
             const userCredential = await signInWithEmailAndPassword(auth, emailValue, passwordValue);
             const user = userCredential.user;
-            window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomePageActual.html';
+            window.location.href = 'https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html';
         }
     } catch (error) {
         console.error("Login error:", error.message);

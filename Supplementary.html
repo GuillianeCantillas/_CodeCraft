@@ -2,105 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="HomepageActual.css">
+  <link rel="stylesheet" href="Supplementary.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Russo+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-
-  <title>CodeCraft</title>
-
-  <style>
-.card-container {
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  padding-top: 4%;
-  gap: 60px;
-}
-
-.card {
-  position: relative;
-  border: 1px solid #ccc;
-  text-align: left;
-  border-radius: 10px;
-  padding: 60px;
-  padding-top: 4%;
-  width: 25%;
-  height: 90%;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 0 8px #000000;
-}
-
-.card:hover {
-  box-shadow: 0 0 1vw rgb(47, 47, 47), 0 0 2vw rgb(52, 52, 52), 0 0 3vw rgb(57, 57, 57), 0 0 4vw rgb(34, 34, 34);
-  transform: scale(1.05);
-}
-
-.card h3 {
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0 10px;
-  font-size: 2.5em;
-  text-align: center;
-}
-
-.card ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.card ul li {
-  margin: 10px 0;
-}
-
-.card ul li a {
-  text-decoration: none;
-  color: #000000;
-  font-size: 1.2em;
-}
-
-.card ul li a:hover {
-  text-decoration: underline;
-}
-
-body {
-  font-family: 'Russo One', sans-serif;
-}
-
-.button {
-    background-color: #171415;
-    display: inline-block;
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-}
-
-  #user-image {
-    width: 2.5vw; 
-    height: 2.5vw; 
-    border-radius: 50%;
-    margin-right: 7.5vw; 
-  }
-
-  nav a.disabled {
-    font-size: 18px;
-    pointer-events: none;
-    color: #F50CA0; 
-    cursor: default;
-  }
-  
-  </style>
+  <title>Supplemetary / Exercises</title>
 </head>
 
 <body>
   <header>
     <h1>CodeCraft</h1>
     <nav>
-      <a href='https://guillianecantillas.github.io/CodeCraft/HomepageActual.html'>Games</a>
+      <a href='https://guillianecantillas.github.io/_CodeCraft/HomepageActual.html'>Games</a>
       <a href="#">Leaderboards</a>
       <a href="#" class="disabled">Supplementary Materials</a>
     </nav>
@@ -111,7 +25,64 @@ body {
   <div class="flowing-line"></div>
 
   <div class="TextContainer">
-    <h2>Supplementary Materials</h2>
+    <h2>Exercises</h2>
+
+    <div class="container">
+      <div class="cardexer">
+        <h3 class="title">C++</h3>
+        <p>Learn all about C++!</p>
+        <div class="bar">
+          <div class="emptybar"></div>
+          <div class="filledbar"></div>
+          <button id="choice" onclick="window.location.href='https://guillianecantillas.github.io/_CodeCraft/Quiz/QuizC.html';">Play</button>
+        </div>
+        <div class="circle">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        </svg>
+        </div>
+      </div>
+      <div class="cardexer">
+        <h3 class="title">Java</h3>
+        <p>Learn all about Java!</p>
+        <div class="bar">
+          <div class="emptybar"></div>
+          <div class="filledbar"></div>
+          <button id="choice" onclick="window.location.href='https://guillianecantillas.github.io/_CodeCraft/Quiz/QuizJava.html';">Play</button>
+        </div>
+        <div class="circle">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        </svg>
+        </div>
+      </div>
+      <div class="cardexer">
+        <h3 class="title">Python</h3>
+        <p>Learn all about Python!</p>
+        <div class="bar">
+          <div class="emptybar"></div>
+          <div class="filledbar"></div>
+          <button id="choice" onclick="window.location.href='https://guillianecantillas.github.io/_CodeCraft/Quiz/QuizPython.html';">Play</button>
+        </div>
+        <div class="circle">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        </svg>
+        </div>
+      </div>
+      <div class="cardexer">
+        <h3 class="title">C#</h3>
+        <p>Learn all about C#!</p>
+        <div class="bar">
+          <div class="emptybar"></div>
+          <div class="filledbar"></div>
+          <button id="choice" onclick="window.location.href='https://guillianecantillas.github.io/_CodeCraft/Quiz/QuizC++.html';">Play</button>
+        </div>
+        <div class="circle">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        </svg>
+        </div>
+      </div>
+      </div>
+
+      <h4>Supplemetary Materials</h4>
     <div class="card-container">
       <div class="card">
         <h3>Compiler</h3>
@@ -137,9 +108,18 @@ body {
           <li><a href="https://www.freecodecamp.org/" target="_blank">FreeCodeCamp</a></li>
         </ul>
       </div>
-    </div>
+    </div> 
   </div>
 
-  <script src="Homepage.js"></script>
+  <footer>
+    <nav>
+      <a href="https://guillianecantillas.github.io/_CodeCraft/AboutUs.html">About Us</a>
+      <a href="https://guillianecantillas.github.io/_CodeCraft/Help.html">Help</a>
+      <a href="#">© 2024 CodeCraft.com</a>
+    </div>
+    </nav>
+  </footer> 
+  
+
 </body>
 </html>
