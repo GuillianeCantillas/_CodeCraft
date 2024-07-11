@@ -9,11 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
 
   <title>About Us</title>
-
   <style>
     body {
         font-family: 'Russo One', sans-serif;
-      /*  line-height: 1.6;
+        /*  line-height: 1.6;
         margin: 20px;
         max-width: 800px;
         margin-left: auto;
@@ -64,7 +63,7 @@
     width: 2.5vw; 
     height: 2.5vw; 
     border-radius: 50%;
-    margin-right: 7.5vw; 
+    margin-right: 2.5vw; 
   }
     footer {
         margin-top: 20px;
@@ -89,7 +88,70 @@
         color: #333;
         
     }
+    .form-container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgb(45, 43, 43);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgb(45, 43, 43);
+            text-align: center;
+            color: white;
+            right: 170px;
+            margin-bottom: 10vw;
+            
+        }
 
+        h4 {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: left;
+            margin-bottom: 12px;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 1.5em;
+            color: #ccc;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+
+        .rating input:checked ~ label {
+            color: #F50CA0;
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #F50CA0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: black;
+            .btn.cancel {
+            background-color: #820404;
+        }
+
+        .btn.cancel:hover {
+            background-color: #820404;
+        }
+        }
   </style>
 </head>
 
@@ -104,9 +166,6 @@
     <button class="button" onclick="window.location.href = 'https://guillianecantillas.github.io/CodeCraft/HomepageUser.html';">
       <img src="Accounts.png" id="user-image"></button>
   </header>
-
-  <div class="flowing-line"></div>
-
   <div class="TextContainer">
     <h3>About Us</h3>
     <p>CodeCraft began on February 7, 2024, as a simple idea that has since become a heartfelt reality. 
@@ -133,9 +192,34 @@
      enabling us to ignite creativity and push the boundaries of programming education. <br>
      We're committed to fostering an inclusive and engaging learning environment, <br>
      where learning to code is both accessible and rewarding.</p>
-  
     </div>
+    <div class="flowing-line"></div>
+    <div class="form-container">
+      <h3>Rate CodeCraft</h3>
+      <form id="feedbackForm">
+          <label for="rating">Rating:</label>
+          <div class="rating">
+              <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="5 stars">★</label>
+              <input type="radio" id="star4" name="rating" value="4" required><label for="star4" title="4 stars">★</label>
+              <input type="radio" id="star3" name="rating" value="3" required><label for="star3" title="3 stars">★</label>
+              <input type="radio" id="star2" name="rating" value="2" required><label for="star2" title="2 stars">★</label>
+              <input type="radio" id="star1" name="rating" value="1" required><label for="star1" title="1 star">★</label>
+          </div>
   
+          <h4>Did CodeCraft improve your programming knowledge?</h4>
+          <label>
+              <input type="radio" name="improve" value="yes" required> Yes
+          </label>
+          <label>
+              <input type="radio" name="improve" value="no" required> No
+          </label>
+  
+          <label for="comments">Any Suggestions?</label>
+          <textarea id="comments" name="comments" rows="4" required></textarea>
+  
+          <button type="submit">Submit</button>
+      </form>
+  </div>
   <footer>
     <nav>
       <a href="AboutUs.html">About</a>
@@ -144,7 +228,6 @@
 
     </nav>
   </footer>
-
   <script src="Homepage.js"></script>
 </body>
 </html>
