@@ -88,7 +88,7 @@ const questionsData = [
     "for i in range(3):"+
         "print(I)",
     choices: [
-        "0 1 2 3",
+        "0 1 2 3 ",
         "0 1 2",
         "1 2 3",
         "Error"
